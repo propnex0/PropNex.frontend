@@ -394,7 +394,21 @@ useEffect(() => {
 
     <div className="listing-warning">
 
-  {credits > 0 ? (
+  {totalListings === 0 ? (
+
+    <>
+      <span>
+        🎉 You have 1 FREE listing available.
+      </span>
+
+      <Link to="/add-listing">
+        <button>
+          Create First Listing
+        </button>
+      </Link>
+    </>
+
+  ) : credits > 0 ? (
 
     <>
       <span>
@@ -427,19 +441,21 @@ useEffect(() => {
 
 </div>
 
-      <Link
+     <Link
   to={
-    credits > 0
+    totalListings === 0 || credits > 0
       ? "/add-listing"
       : "/pricing"
   }
   className="create-listing-btn"
 >
   {
-    credits > 0
-      ? "+ Create New Listing"
-      : "🚀 Buy Package To Add More Listings"
-  }
+  totalListings === 0
+    ? "+ Create First Free Listing"
+    : credits > 0
+    ? "+ Create New Listing"
+    : "🚀 Buy Package To Add More Listings"
+}
 </Link>
 
         <div className="live-card">
