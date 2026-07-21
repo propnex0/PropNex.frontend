@@ -249,6 +249,8 @@ if (video) {
 const userInfo = JSON.parse(
   localStorage.getItem("userInfo") || "{}"
 );
+console.log("TOKEN =",userInfo.token);
+console.log("IMAGES =",images);
    const response = await fetch(
 "https://prop-nex-backend.vercel.app/api/listings",
 {
