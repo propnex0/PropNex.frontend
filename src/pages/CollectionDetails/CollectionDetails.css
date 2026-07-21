@@ -1,0 +1,328 @@
+/* =========================
+   COLLECTION DETAILS PAGE
+========================= */
+
+.collection-details{
+
+    min-height:100vh;
+
+    padding:30px;
+
+    background:#f8fafc;
+
+    font-family:"Inter","Segoe UI",sans-serif;
+
+}
+
+
+
+/* TITLE */
+
+.collection-details h1{
+
+    font-size:32px;
+
+    font-weight:800;
+
+    color:#032d21;
+
+    margin-bottom:30px;
+
+}
+
+
+
+/* =========================
+   PROPERTY GRID
+========================= */
+
+.property-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+    align-items:start;
+
+}
+
+
+
+/* =========================
+   PROPERTY CARD
+========================= */
+
+.property-card{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,0.08);
+
+    transition:0.3s ease;
+
+    height:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+.property-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+
+/* =========================
+   PROPERTY IMAGE
+========================= */
+
+.property-card img{
+
+    width:100%;
+
+    height:180px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.property-content{
+
+    padding:15px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+.property-content h3{
+
+    font-size:17px;
+
+    font-weight:700;
+
+    color:#032d21;
+
+    margin:0 0 10px;
+
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
+
+}
+
+
+
+.property-price{
+
+    font-size:18px;
+
+    font-weight:800;
+
+    color:#0b6248;
+
+    margin:8px 0;
+
+}
+
+
+
+.property-city{
+
+    display:block;
+
+    font-size:13px;
+
+    color:#666;
+
+    margin-bottom:15px;
+
+}
+
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.view-details-btn{
+
+    width:100%;
+
+    padding:10px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#005c45;
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+
+.view-details-btn:hover{
+
+    background:#003d2d;
+
+}
+
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:1100px){
+
+
+.property-grid{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+
+}
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+
+.collection-details{
+
+    padding:15px;
+
+}
+
+
+
+.collection-details h1{
+
+    font-size:24px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+/* 2 CARDS IN ONE ROW */
+
+.property-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:12px;
+
+}
+
+
+
+.property-card{
+
+    border-radius:16px;
+
+}
+
+
+
+/* IMAGE MOBILE */
+
+.property-card img{
+
+    height:120px;
+
+}
+
+
+
+/* CONTENT */
+
+.property-content{
+
+    padding:10px;
+
+}
+
+
+
+.property-content h3{
+
+    font-size:14px;
+
+}
+
+
+
+.property-price{
+
+    font-size:14px;
+
+}
+
+
+
+.property-city{
+
+    font-size:11px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.view-details-btn{
+
+    padding:8px;
+
+    font-size:12px;
+
+    border-radius:10px;
+
+}
+
+
+
+}

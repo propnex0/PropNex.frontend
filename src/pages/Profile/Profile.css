@@ -1,0 +1,719 @@
+/* =========================
+   PROPNEX PROFILE PAGE
+========================= */
+
+.profile-page{
+    min-height:100vh;
+    background:#f8fafc;
+    font-family:"Inter","Segoe UI",sans-serif;
+    padding-bottom:80px;
+}
+
+
+/* BANNER */
+
+.profile-banner{
+
+    height:240px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #032d21,
+        #0d4d3b,
+        #17875d
+    );
+
+    border-radius:0 0 45px 45px;
+
+    position:relative;
+
+}
+
+
+
+/* BUTTONS */
+
+.banner-buttons{
+
+    position:absolute;
+
+    top:25px;
+
+    left:40px;
+
+    right:40px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+}
+
+
+
+.banner-buttons button{
+
+    background:white;
+
+    color:#0d4d3b;
+
+    border:none;
+
+    padding:12px 28px;
+
+    border-radius:30px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+
+/* PROFILE CARD */
+
+
+.profile-card{
+
+    width:650px;
+
+    max-width:90%;
+
+    background:white;
+
+    margin:-90px auto 50px;
+
+    padding:40px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    position:relative;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.12);
+
+}
+
+
+
+
+/* AVATAR */
+
+
+.profile-avatar{
+
+    height:150px;
+
+    width:150px;
+
+    margin:-120px auto 20px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    background:#0d4d3b;
+
+    border:7px solid white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-size:55px;
+
+    font-weight:800;
+
+}
+
+
+
+.profile-avatar img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+
+.profile-card h1{
+
+    font-size:32px;
+
+    margin:15px 0 5px;
+
+}
+
+
+
+.profile-card p{
+
+    color:#64748b;
+
+}
+
+
+
+/* STATS */
+
+
+.profile-stats{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:80px;
+
+    margin:35px 0;
+
+}
+
+
+
+.profile-stats h2{
+
+    margin:0;
+
+    font-size:34px;
+
+    color:#0d4d3b;
+
+}
+
+
+
+.profile-stats span{
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+
+
+
+
+/* BUTTONS */
+
+
+.profile-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+}
+
+
+
+.profile-buttons a{
+
+    padding:14px 45px;
+
+    border-radius:30px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:700;
+
+}
+
+
+.whatsapp-btn{
+
+    background:#25D366;
+
+}
+
+
+.call-btn{
+
+    background:#0d4d3b;
+
+}
+
+
+
+
+
+
+/* PROPERTY SECTION */
+
+
+.properties-section{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+}
+
+
+
+.properties-head{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+.properties-head h2{
+
+    font-size:32px;
+
+}
+
+
+
+.count{
+
+    background:#0d4d3b;
+
+    color:white;
+
+    padding:8px 20px;
+
+    border-radius:30px;
+
+}
+
+
+
+.hide-text{
+
+    color:#64748b;
+
+}
+
+
+
+
+/* GRID */
+
+
+.property-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+}
+
+
+
+
+
+/* CARD */
+
+
+.property-card,
+.add-card{
+
+
+    height:430px;
+
+    background:white;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+
+
+.property-card{
+
+    cursor:pointer;
+
+}
+
+
+
+.property-card:hover,
+.add-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+
+
+
+
+
+/* IMAGE */
+
+
+.property-image{
+
+    height:220px;
+
+    background:#e5e7eb;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+
+.property-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+
+
+
+
+
+/* PROPERTY TEXT */
+
+
+.property-info{
+
+
+    text-align:center;
+
+    padding:20px 10px;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+
+    gap:8px;
+
+
+}
+
+
+
+.property-info h3{
+
+
+    margin:0;
+
+    font-size:20px;
+
+    font-weight:800;
+
+    color:#111827;
+
+
+}
+
+
+
+.property-info h3:nth-child(2){
+
+    font-size:18px;
+
+    color:#047857;
+
+}
+
+
+
+.property-info p{
+
+    margin:0;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#64748b;
+
+}
+
+
+
+
+
+/* DELETE BUTTON */
+
+
+.close-btn{
+
+    position:absolute;
+
+    right:12px;
+
+    top:12px;
+
+    height:36px;
+
+    width:36px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:white;
+
+    color:red;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    z-index:5;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+
+
+
+
+/* ADD CARD */
+
+
+.add-card{
+
+    border:2px dashed #0d4d3b;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.add-card span{
+
+    font-size:65px;
+
+    color:#0d4d3b;
+
+}
+
+
+
+.add-card p{
+
+    color:#0d4d3b;
+
+    font-weight:700;
+
+}
+
+
+
+
+/* FOOTER */
+
+
+.powered{
+
+    text-align:center;
+
+    margin-top:60px;
+
+    color:#94a3b8;
+
+}
+
+
+
+
+
+/* TABLET */
+
+
+@media(max-width:1000px){
+
+
+.property-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+
+}
+
+
+
+
+/* MOBILE */
+
+
+@media(max-width:768px){
+
+
+.profile-banner{
+
+height:190px;
+
+}
+
+
+
+.profile-card{
+
+margin:-60px auto 40px;
+
+padding:25px 15px;
+
+}
+
+
+
+.profile-avatar{
+
+height:120px;
+
+width:120px;
+
+margin-top:-95px;
+
+}
+
+
+
+.profile-stats{
+
+gap:35px;
+
+}
+
+
+
+.profile-buttons{
+
+flex-direction:column;
+
+}
+
+
+
+.profile-buttons a{
+
+width:100%;
+
+}
+
+
+
+.property-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:12px;
+
+}
+
+
+
+.property-card,
+.add-card{
+
+height:300px;
+
+}
+
+
+
+.property-image{
+
+height:160px;
+
+}
+
+
+
+.property-info{
+
+padding:12px;
+
+}
+
+
+
+.property-info h3{
+
+font-size:17px;
+
+}
+
+
+
+.property-info p{
+
+font-size:13px;
+
+}
+
+
+
+}
+
+.profile-page{
+  margin-left:270px;
+  padding:20px;
+  min-height:100vh;
+}
+
+@media(max-width:768px){
+  .profile-page{
+    margin-left:0;
+    padding:15px;
+    padding-bottom:90px;
+  }
+}

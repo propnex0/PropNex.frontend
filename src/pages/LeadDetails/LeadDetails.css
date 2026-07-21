@@ -1,0 +1,582 @@
+/* Lead Details Page */
+
+.lead-details{
+  min-height:100vh;
+  background:#f5f7fb;
+  padding:40px 20px;
+  font-family:Inter, Arial, sans-serif;
+}
+
+
+/* Back Button */
+
+.back-btn{
+
+  border:none;
+  background:#111827;
+  color:white;
+
+  padding:12px 20px;
+  border-radius:12px;
+
+  font-size:15px;
+  cursor:pointer;
+
+  margin-bottom:25px;
+
+  transition:.3s;
+
+}
+
+
+.back-btn:hover{
+
+  background:#2563eb;
+  transform:translateY(-2px);
+
+}
+
+
+
+/* Card */
+
+.lead-detail-card{
+
+ max-width:700px;
+
+ margin:auto;
+
+ background:white;
+
+ border-radius:24px;
+
+ padding:35px;
+
+ box-shadow:
+ 0 20px 50px rgba(0,0,0,.08);
+
+ border:1px solid #eee;
+
+}
+
+
+
+/* Name */
+
+.lead-detail-card h1{
+
+ font-size:34px;
+
+ margin-bottom:25px;
+
+ color:#111827;
+
+}
+
+
+
+/* Details */
+
+.lead-detail-card p{
+
+ background:#f9fafb;
+
+ padding:15px 18px;
+
+ border-radius:14px;
+
+ margin:14px 0;
+
+ color:#374151;
+
+ font-size:16px;
+
+ line-height:1.6;
+
+ border:1px solid #eef0f3;
+
+}
+
+
+.lead-detail-card p::first-line{
+
+ font-weight:600;
+
+}
+
+
+
+/* Status Select */
+
+.lead-detail-card select{
+
+ width:100%;
+
+ padding:14px 16px;
+
+ border-radius:14px;
+
+ border:1px solid #ddd;
+
+ background:white;
+
+ font-size:16px;
+
+ margin-bottom:15px;
+
+ cursor:pointer;
+
+ outline:none;
+
+}
+
+
+.lead-detail-card select:focus{
+
+ border-color:#2563eb;
+
+}
+
+
+
+/* Buttons */
+
+.lead-buttons{
+
+ display:flex;
+
+ gap:15px;
+
+ margin-top:30px;
+
+ flex-wrap:wrap;
+
+}
+
+
+
+.lead-buttons a,
+.delete-btn{
+
+
+ flex:1;
+
+ min-width:180px;
+
+ text-align:center;
+
+ padding:15px;
+
+ border-radius:14px;
+
+ font-size:16px;
+
+ font-weight:600;
+
+ cursor:pointer;
+
+ text-decoration:none;
+
+ border:none;
+
+ transition:.3s;
+
+}
+
+
+
+/* Whatsapp */
+
+.whatsapp-btn{
+
+ background:#22c55e;
+
+ color:white;
+
+}
+
+
+.whatsapp-btn:hover{
+
+ background:#16a34a;
+
+ transform:translateY(-3px);
+
+}
+
+
+
+/* Call */
+
+.call-btn{
+
+ background:#2563eb;
+
+ color:white;
+
+}
+
+
+.call-btn:hover{
+
+ background:#1d4ed8;
+
+ transform:translateY(-3px);
+
+}
+
+
+
+/* Delete */
+
+.delete-btn{
+
+ background:#ef4444;
+
+ color:white;
+
+}
+
+
+.delete-btn:hover{
+
+ background:#dc2626;
+
+ transform:translateY(-3px);
+
+}
+
+
+.delete-btn:disabled{
+
+ opacity:.6;
+
+ cursor:not-allowed;
+
+}
+
+
+
+/* Loading */
+
+.lead-details h2{
+
+ text-align:center;
+
+ margin-top:100px;
+
+ font-size:28px;
+
+ color:#374151;
+
+}
+
+
+
+
+
+/* Tablet */
+
+@media(max-width:768px){
+
+
+.lead-details{
+
+ padding:25px 15px;
+
+}
+
+
+.lead-detail-card{
+
+ padding:25px;
+
+ border-radius:20px;
+
+}
+
+
+.lead-detail-card h1{
+
+ font-size:28px;
+
+}
+
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:480px){
+
+
+.lead-details{
+
+ padding:15px;
+
+}
+
+
+.back-btn{
+
+ width:100%;
+
+ margin-bottom:20px;
+
+}
+
+
+
+.lead-detail-card{
+
+ padding:20px;
+
+}
+
+
+.lead-detail-card h1{
+
+ font-size:24px;
+
+ text-align:center;
+
+}
+
+
+.lead-detail-card p{
+
+ font-size:14px;
+
+ padding:13px;
+
+}
+
+
+
+.lead-buttons{
+
+ flex-direction:column;
+
+}
+
+
+
+.lead-buttons a,
+.delete-btn{
+
+ width:100%;
+
+ min-width:100%;
+
+}
+
+
+
+}
+
+.complete-followup-btn{
+
+margin-top:15px;
+
+padding:12px 20px;
+
+border:none;
+
+border-radius:12px;
+
+background:#16a34a;
+
+color:white;
+
+font-size:15px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+
+.complete-followup-btn:hover{
+
+background:#15803d;
+
+transform:translateY(-2px);
+
+}
+
+
+
+.complete-followup-btn:disabled{
+
+background:#64748b;
+
+cursor:not-allowed;
+
+opacity:0.8;
+
+}
+
+.followup-history{
+
+margin-top:20px;
+padding:15px;
+background:#f5f7ff;
+border-radius:12px;
+
+}
+
+
+.followup-history h3{
+
+margin-bottom:10px;
+
+}
+
+
+.history-item{
+
+padding:10px;
+background:white;
+border-radius:10px;
+
+}
+
+
+.history-item p{
+
+font-weight:600;
+
+}
+
+
+.history-item span{
+
+font-size:14px;
+color:#666;
+
+}
+
+.reschedule-btn{
+
+margin-top:15px;
+padding:10px 18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+
+}
+/* Complete Follow Up Button */
+
+.complete-followup-btn{
+  width:100%;
+  margin-top:15px;
+  padding:14px 20px;
+  border:none;
+  border-radius:12px;
+  background:#16a34a;
+  color:#fff;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.complete-followup-btn:hover{
+  background:#15803d;
+  transform:translateY(-2px);
+}
+
+.complete-followup-btn.completed{
+  background:#64748b;
+}
+
+.complete-followup-btn:disabled{
+  cursor:not-allowed;
+  opacity:.9;
+}
+
+
+
+/* Follow Up History */
+
+.followup-history{
+  margin-top:25px;
+  padding:18px;
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+}
+
+.followup-history h3{
+  margin-bottom:12px;
+  color:#111827;
+}
+
+.history-item{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:14px;
+}
+
+.history-item p{
+  margin:0;
+  padding:0;
+  background:none;
+  border:none;
+  font-weight:600;
+}
+
+.history-item span{
+  display:block;
+  margin-top:8px;
+  font-size:13px;
+  color:#6b7280;
+}
+
+
+
+/* Reschedule Button */
+
+.reschedule-btn{
+  width:100%;
+  margin-top:12px;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:#f59e0b;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.reschedule-btn:hover{
+  background:#d97706;
+  transform:translateY(-2px);
+}
+
+
+
+/* Status Dropdown Better UI */
+
+.lead-detail-card select{
+  width:100%;
+  padding:14px 16px;
+  border-radius:12px;
+  border:1px solid #d1d5db;
+  background:#fff;
+  margin-bottom:15px;
+  font-size:15px;
+}
+
+.lead-detail-card select:focus{
+  outline:none;
+  border-color:#2563eb;
+  box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}

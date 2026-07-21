@@ -1,0 +1,353 @@
+.pricing-page{
+  min-height:100vh;
+  background:#f5f7fb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.payment-card{
+  width:100%;
+  max-width:550px;
+  background:#fff;
+  padding:35px;
+  border-radius:30px;
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+.payment-card h2{
+  color:#00a86b;
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.payment-card h1{
+  font-size:34px;
+  color:#111827;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:#6b7280;
+  font-size:15px;
+}
+
+.plans{
+  display:flex;
+  gap:15px;
+  margin-top:30px;
+}
+
+.plan{
+  flex:1;
+  position:relative;
+  border:2px solid #e5e7eb;
+  border-radius:22px;
+  padding:25px 15px;
+  cursor:pointer;
+  transition:.3s;
+  background:#fff;
+}
+
+.plan:hover{
+  transform:translateY(-4px);
+}
+
+.active-plan{
+  border:2px solid #0d4d3b !important;
+  background:#ecfdf5;
+  box-shadow:0 8px 20px rgba(13,77,59,.15);
+}
+
+.best-value{
+  position:absolute;
+  top:-12px;
+  right:10px;
+  background:#0d4d3b;
+  color:#fff !important;
+  padding:5px 12px;
+  border-radius:30px;
+  font-size:11px !important;
+  font-weight:700;
+}
+
+.plan h2{
+  font-size:38px;
+  margin:0;
+  color:#111827;
+}
+
+.plan span{
+  display:block;
+  color:#6b7280;
+  font-size:14px;
+  margin-top:5px;
+}
+
+.plan h3{
+  font-size:32px;
+  margin-top:12px;
+  color:#0d4d3b;
+}
+
+.plan p{
+  margin-top:5px;
+  font-size:14px;
+  color:#6b7280;
+}
+
+.feature-list{
+  list-style:none;
+  padding:0;
+  margin:30px 0;
+}
+
+.feature-list li{
+  text-align:left;
+  margin:12px 0;
+  color:#374151;
+  font-size:15px;
+}
+
+.pay-btn{
+  width:100%;
+  padding:18px;
+  background:#0d4d3b;
+  color:#fff;
+  border:none;
+  border-radius:14px;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.pay-btn:hover{
+  background:#0a3d2f;
+}
+
+.secure-text{
+  display:block;
+  margin-top:20px;
+  color:#6b7280;
+  font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .payment-card{
+    padding:25px;
+  }
+
+  .payment-card h1{
+    font-size:26px;
+  }
+
+  .plans{
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+  }
+
+  .plan{
+    padding:18px 10px;
+  }
+
+  .plan h2{
+    font-size:28px;
+  }
+
+  .plan h3{
+    font-size:24px;
+  }
+
+  .plan span,
+  .plan p{
+    font-size:12px;
+  }
+
+  .best-value{
+    font-size:9px !important;
+    padding:4px 8px;
+  }
+}
+
+.pricing-page{
+  margin-left:270px;
+  padding:20px;
+  transition:.3s;
+}
+
+@media(max-width:768px){
+  .pricing-page{
+    margin-left:0;
+  }
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:992px){
+
+  .pricing-page{
+    margin-left:0;
+    padding:25px;
+    min-height:auto;
+  }
+
+  .payment-card{
+    max-width:650px;
+    padding:30px;
+  }
+
+}
+
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+  .pricing-page{
+    margin-left:0;
+    padding:15px;
+    align-items:flex-start;
+  }
+
+  .payment-card{
+    width:100%;
+    max-width:100%;
+    padding:22px;
+    border-radius:20px;
+  }
+
+  .site-logo{
+    height:42px;
+    margin:0 auto 10px;
+  }
+
+  .payment-card h1{
+    font-size:28px;
+    line-height:1.3;
+  }
+
+  .subtitle{
+    font-size:14px;
+  }
+
+  .plans{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .plan{
+    width:100%;
+    padding:22px;
+  }
+
+  .plan h2{
+    font-size:34px;
+  }
+
+  .plan h3{
+    font-size:28px;
+  }
+
+  .listing-text,
+  .plan p{
+    font-size:14px;
+  }
+
+  .best-value{
+    top:10px;
+    right:10px;
+    font-size:10px !important;
+    padding:5px 10px;
+  }
+
+  .pricing-alert{
+    padding:16px;
+    margin:20px 0;
+  }
+
+  .pricing-alert h3{
+    font-size:18px;
+  }
+
+  .pricing-alert p{
+    font-size:14px;
+    line-height:1.6;
+  }
+
+  .feature-list{
+    margin:25px 0;
+  }
+
+  .feature-list li{
+    font-size:14px;
+    margin:10px 0;
+  }
+
+  .pay-btn{
+    font-size:17px;
+    padding:16px;
+  }
+
+  .secure-text{
+    font-size:13px;
+  }
+
+}
+
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+  .pricing-page{
+    padding:12px;
+  }
+
+  .payment-card{
+    padding:18px;
+    border-radius:16px;
+  }
+
+  .site-logo{
+    height:36px;
+  }
+
+  .payment-card h1{
+    font-size:24px;
+  }
+
+  .subtitle{
+    font-size:13px;
+  }
+
+  .plan{
+    padding:18px;
+  }
+
+  .plan h2{
+    font-size:30px;
+  }
+
+  .plan h3{
+    font-size:24px;
+  }
+
+  .pay-btn{
+    font-size:16px;
+    padding:15px;
+  }
+
+}

@@ -1,0 +1,172 @@
+/* .desktop-sidebar{
+  width:270px;
+  height:100vh;
+  position:fixed;
+  top:0;
+  left:0;
+  background:#ffffff;
+  border-right:1px solid #e5e7eb;
+  padding:24px 18px;
+  display:flex;
+  flex-direction:column;
+  z-index:9999;
+  overflow-y:auto;
+  overflow-x:hidden;
+} */
+.desktop-sidebar{
+  width:250px;
+  height:100vh;
+  position:fixed;
+  top:0;
+  left:0;
+  background:#ffffff;
+  border-right:1px solid #e5e7eb;
+  padding:24px 18px;
+  display:flex;
+  flex-direction:column;
+  z-index:1000;
+
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+.sidebar-logo img{
+  width:150px;
+  height:auto;
+  display:block;
+  margin:auto;
+}
+.sidebar-logo{
+  font-size:30px;
+  font-weight:700;
+  color:#0d4d3b;
+  margin-bottom:35px;
+  text-align:center;
+  letter-spacing:.7px;
+  margin-left:0;
+}
+
+.sidebar-menu{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.sidebar-menu a{
+  text-decoration:none;
+  color:#4b5563;
+  padding:14px 18px;
+  border-radius:14px;
+  font-size:15px;
+  font-weight:600;
+  transition:all .25s ease;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid transparent;
+}
+
+.sidebar-menu a:hover{
+  background:#0d4d3b;
+  color:#ffffff;
+  transform:translateX(4px);
+}
+
+.sidebar-menu a.active{
+  background:#0d4d3b;
+  color:#ffffff;
+  border:1px solid #0d4d3b;
+  box-shadow:0 10px 25px rgba(13,77,59,.18);
+}
+
+.sidebar-menu a.active:hover{
+  transform:none;
+}
+
+.sidebar-footer{
+  margin-top:auto;
+  padding-top:20px;
+}
+
+.buy-plan-btn{
+  width:100%;
+  background:#0d4d3b;
+  color:#ffffff;
+  border:none;
+  padding:14px;
+  border-radius:14px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.buy-plan-btn:hover{
+  background:#0a3d2f;
+}
+
+.buy-plan-btn:active{
+  transform:scale(.98);
+}
+
+/* Scrollbar */
+
+.desktop-sidebar::-webkit-scrollbar{
+  width:6px;
+}
+
+.desktop-sidebar::-webkit-scrollbar-thumb{
+  background:#d1d5db;
+  border-radius:20px;
+}
+
+.desktop-sidebar::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+/* Main Page Space */
+
+.dashboard,
+.listings-page,
+.collections-page,
+.agency-page,
+.pricing-page,
+.edit-profile-page{
+  margin-left:250px;
+}
+
+/* Tablet */
+
+@media(max-width:1024px){
+
+  .desktop-sidebar{
+    width:240px;
+  }
+
+  .dashboard,
+  .listings-page,
+  .collections-page,
+  .agency-page,
+  .pricing-page,
+  .edit-profile-page{
+    margin-left:240px;
+  }
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+  .desktop-sidebar{
+    display:none;
+  }
+
+  .dashboard,
+  .listings-page,
+  .collections-page,
+  .agency-page,
+  .pricing-page,
+  .edit-profile-page{
+    margin-left:0;
+  }
+
+}

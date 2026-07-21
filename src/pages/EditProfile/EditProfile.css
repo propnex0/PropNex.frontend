@@ -1,0 +1,791 @@
+/* ===========================
+   PROPNEX EDIT PROFILE PAGE
+=========================== */
+
+
+.edit-profile{
+
+min-height:100vh;
+
+background:#f8fafc;
+
+font-family:
+"Inter",
+"Segoe UI",
+sans-serif;
+
+padding:40px 20px 100px;
+
+}
+
+
+/* ===========================
+   PAGE TITLE
+=========================== */
+
+
+.edit-profile h1{
+
+text-align:center;
+
+font-size:34px;
+
+font-weight:800;
+
+color:#032d21;
+
+margin-bottom:35px;
+
+}
+
+
+
+
+
+/* ===========================
+   PROFILE TOP CARD
+=========================== */
+
+
+.profile-header{
+
+max-width:900px;
+
+margin:auto;
+
+padding:35px;
+
+border-radius:35px;
+
+
+background:
+
+linear-gradient(
+135deg,
+#032d21,
+#0d4d3b,
+#1aa36f
+);
+
+
+display:flex;
+
+align-items:center;
+
+gap:40px;
+
+
+box-shadow:
+
+0 20px 40px rgba(0,0,0,.18);
+
+color:white;
+
+}
+
+
+
+/* ===========================
+ PHOTO UPLOAD
+=========================== */
+
+
+.photo-section{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:18px;
+
+}
+
+
+
+.profile-preview{
+
+
+width:150px;
+
+height:150px;
+
+
+border-radius:50%;
+
+
+object-fit:cover;
+
+
+border:
+
+5px solid white;
+
+
+background:white;
+
+
+box-shadow:
+
+0 10px 25px rgba(0,0,0,.25);
+
+
+}
+
+
+
+
+
+/* upload input */
+
+
+.photo-section input[type="file"]{
+
+
+width:220px;
+
+
+background:white;
+
+
+padding:10px;
+
+
+border-radius:12px;
+
+
+font-size:13px;
+
+
+color:#032d21;
+
+
+cursor:pointer;
+
+
+}
+
+
+
+
+
+.photo-section input[type="file"]::file-selector-button{
+
+
+background:#032d21;
+
+
+color:white;
+
+
+border:none;
+
+
+padding:8px 12px;
+
+
+border-radius:8px;
+
+
+cursor:pointer;
+
+
+margin-right:10px;
+
+
+}
+
+
+
+
+
+/* ===========================
+ PROFILE INFORMATION
+=========================== */
+
+
+.profile-card{
+
+flex:1;
+
+background:white;
+
+border-radius:30px;
+
+padding:40px;
+
+min-height:170px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+color:#032d21;
+
+}
+
+
+.profile-card h2{
+
+font-size:32px;
+
+margin:0 0 12px;
+
+font-weight:800;
+
+color:#032d21;
+
+}
+
+.profile-card p{
+
+font-size:20px;
+
+margin:5px 0;
+
+opacity:.9;
+
+color:#64748b;
+
+}
+
+
+.profile-card span{
+
+display:inline-block;
+
+background:#032d21;
+
+color:white;
+
+padding:8px 20px;
+
+border-radius:25px;
+
+font-weight:700;
+
+margin-top:12px;
+
+width:max-content;
+
+}
+
+
+
+
+/* ===========================
+ STATS SECTION
+=========================== */
+
+
+.stats-row{
+
+
+max-width:900px;
+
+
+margin:35px auto;
+
+
+display:grid;
+
+
+grid-template-columns:repeat(2,1fr);
+
+
+gap:25px;
+
+
+}
+
+
+
+
+.stat-box{
+
+
+background:white;
+
+
+padding:30px;
+
+
+border-radius:25px;
+
+
+text-align:center;
+
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,.08);
+
+
+border:1px solid #e5e7eb;
+
+
+}
+
+
+
+
+.stat-box h3{
+
+
+font-size:36px;
+
+
+margin:0;
+
+
+color:#0d4d3b;
+
+
+font-weight:800;
+
+
+}
+
+
+
+
+.stat-box p{
+
+
+margin-top:10px;
+
+
+color:#64748b;
+
+
+font-size:15px;
+
+
+}
+
+
+
+
+
+/* ===========================
+ FORM SECTION
+=========================== */
+
+
+.edit-profile > input,
+.edit-profile textarea{
+
+
+display:block;
+
+
+max-width:700px;
+
+
+width:100%;
+
+
+margin:18px auto;
+
+
+padding:16px 20px;
+
+
+font-size:16px;
+
+
+border-radius:15px;
+
+
+border:
+
+1px solid #dbe3ea;
+
+
+background:white;
+
+
+outline:none;
+
+
+transition:.3s;
+
+
+}
+
+
+
+
+
+.edit-profile > input:hover,
+.edit-profile textarea:hover{
+
+
+border-color:#17875d;
+
+
+}
+
+
+
+
+.edit-profile > input:focus,
+.edit-profile textarea:focus{
+
+
+border-color:#17875d;
+
+
+box-shadow:
+
+0 0 0 4px rgba(23,135,93,.15);
+
+
+}
+
+
+
+
+
+textarea{
+
+
+height:150px;
+
+
+resize:none;
+
+
+font-family:inherit;
+
+
+}
+
+
+
+
+/* ===========================
+ SOCIAL TITLE
+=========================== */
+
+
+.edit-profile h3{
+
+
+max-width:700px;
+
+
+margin:
+
+40px auto 15px;
+
+
+font-size:23px;
+
+
+font-weight:800;
+
+
+color:#032d21;
+
+
+}
+
+
+
+
+
+/* ===========================
+ SAVE BUTTON
+=========================== */
+
+
+.save-btn{
+
+
+display:block;
+
+
+max-width:700px;
+
+
+width:100%;
+
+
+margin:40px auto;
+
+
+padding:17px;
+
+
+border:none;
+
+
+border-radius:18px;
+
+
+cursor:pointer;
+
+
+font-size:18px;
+
+
+font-weight:700;
+
+
+color:white;
+
+
+
+background:
+
+
+linear-gradient(
+135deg,
+#032d21,
+#17875d
+);
+
+
+
+box-shadow:
+
+
+0 10px 25px rgba(0,0,0,.2);
+
+
+transition:.3s;
+
+
+}
+
+
+
+
+
+.save-btn:hover{
+
+
+transform:translateY(-3px);
+
+
+box-shadow:
+
+
+0 15px 35px rgba(0,0,0,.25);
+
+
+}
+
+
+
+
+
+/* ===========================
+ MOBILE RESPONSIVE
+=========================== */
+
+
+@media(max-width:768px){
+
+
+.edit-profile{
+
+
+padding:25px 15px 80px;
+
+
+}
+
+
+
+.edit-profile h1{
+
+
+font-size:26px;
+
+
+}
+
+
+
+
+.profile-header{
+
+
+flex-direction:column;
+
+
+text-align:center;
+
+
+padding:25px;
+
+
+border-radius:25px;
+
+
+gap:25px;
+
+
+}
+
+
+
+.profile-preview{
+
+
+width:130px;
+
+height:130px;
+
+
+}
+
+
+
+
+.profile-card h2{
+
+
+font-size:25px;
+
+
+}
+
+
+
+.profile-card p{
+
+
+font-size:17px;
+
+
+}
+
+
+
+
+.stats-row{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+.stat-box{
+
+
+padding:22px;
+
+
+}
+
+
+
+.stat-box h3{
+
+
+font-size:30px;
+
+
+}
+
+
+
+
+
+.photo-section input[type="file"]{
+
+
+width:100%;
+
+
+max-width:250px;
+margin-bottom: 50px;
+
+}
+
+
+
+
+}
+
+
+
+
+/* SMALL MOBILE */
+
+
+@media(max-width:420px){
+
+
+.profile-header{
+
+
+padding:20px;
+
+
+}
+
+
+
+.profile-preview{
+
+
+width:110px;
+
+height:110px;
+
+
+}
+
+
+
+.edit-profile > input,
+.edit-profile textarea{
+
+
+font-size:14px;
+
+
+padding:14px;
+
+
+}
+
+
+
+.save-btn{
+
+
+font-size:16px;
+
+
+}
+
+
+
+}
+
+
+.edit-profile{
+  margin-left:270px;
+  padding:20px;
+  min-height:100vh;
+}
+
+@media(max-width:768px){
+  .edit-profile{
+    margin-left:0;
+    padding:15px;
+    padding-bottom:90px;
+  }
+}

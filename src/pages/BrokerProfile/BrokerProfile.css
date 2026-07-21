@@ -1,0 +1,34 @@
+.broker-page{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.broker-card{
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.broker-photo{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.broker-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  margin-top:20px;
+}
+
+.broker-actions button{
+  padding:12px 25px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+}
