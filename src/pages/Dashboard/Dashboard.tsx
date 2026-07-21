@@ -84,7 +84,7 @@ const updateLeadStatus = async (
 
 };
   const brokerLink =
-    `http://localhost:5173/broker/${userInfo._id}`;
+    `https://prop-nex-backend.vercel.app/broker/${userInfo._id}`;
 
  const getProfile = async () => {
 
