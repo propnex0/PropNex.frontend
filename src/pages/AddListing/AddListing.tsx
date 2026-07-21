@@ -250,7 +250,7 @@ const userInfo = JSON.parse(
   localStorage.getItem("userInfo") || "{}"
 );
    const response = await fetch(
-"https://prop-nex-frontend.vercel.app/api/listings",
+"http://localhost:5000/api/listings",
 {
   method:"POST",
 
