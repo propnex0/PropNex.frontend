@@ -250,12 +250,14 @@ const userInfo = JSON.parse(
   localStorage.getItem("userInfo") || "{}"
 );
    const response = await fetch(
-"https://prop-nex-backend.vercel.app/api/listings",
+"https://prop-nex-frontend.vercel.app/api/listings",
 {
   method:"POST",
+
   headers:{
     Authorization:`Bearer ${userInfo.token}`
   },
+
   body:formData
 }
 );
