@@ -56,12 +56,12 @@ Authorization:
 }
 
 );
-// const response = await API.get('/leads',{
-//   headers:{
-//     Authorization: `Bearer ${userInfo.token}`
-//   }
-// })
-// console.log(response.data)
+const response = await API.get('/leads',{
+  headers:{
+    Authorization: `Bearer ${userInfo.token}`
+  }
+})
+console.log(response.data)
 
 const data = await res.json();
 
