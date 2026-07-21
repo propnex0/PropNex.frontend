@@ -249,8 +249,11 @@ if (video) {
 const userInfo = JSON.parse(
   localStorage.getItem("userInfo") || "{}"
 );
+
+console.log("USER INFO =", userInfo);
+console.log("TOKEN =", userInfo.token);
    const response = await fetch(
-"http://localhost:5000/api/listings",
+  "https://prop-nex-backend.vercel.app/api/listings",
 {
   method:"POST",
 
