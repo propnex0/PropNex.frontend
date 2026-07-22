@@ -5,7 +5,14 @@ import Header from "../../components/Header/Header";
 import "./Listings.css";
 
 
-import "./Listings.css";
+
+const getMediaUrl = (url: string) => {
+  if (!url) return "";
+
+  return url.startsWith("http")
+    ? url
+    : `https://prop-nex-backend.vercel.app${url}`;
+};
 const Listings = () => {
   const navigate = useNavigate();
 const deleteHandler = async (id: string) => {
@@ -86,6 +93,8 @@ useEffect(() => {
       );
 
       const data = await response.json();
+console.log("MY LISTINGS =", data);
+console.log("FIRST IMAGES =", data[0]?.images);
 
       console.log("MY LISTINGS =", data);
 
@@ -214,7 +223,8 @@ useEffect(() => {
       (img: string, index: number) => (
         <img
           key={index}
-          src={`https://prop-nex-backend.vercel.app${img}`}
+          onError={() => console.log("Image Error =", img)}
+          src={getMediaUrl(img)}
           alt={item.title}
           style={{
             width: "80px",
