@@ -264,6 +264,13 @@ const userInfo = JSON.parse(
 
     const data = await response.json();
 
+    console.log("STATUS =", response.status);
+console.log("DATA =", data);
+
+if (!response.ok) {
+  throw new Error(data.message || "Upload failed");
+}
+
     console.log(data);
     console.log("LISTING DATA =", data);
     console.log("SELECTED STATUS =", status);
@@ -315,10 +322,10 @@ if (savedAgency) {
     setLocation("");
     setPropertyType("Apartment");
     setDescription("");
-  } catch (error) {
-    console.log(error);
-    alert("Failed To Create Property");
-  }
+  } catch (error: any) {
+  console.error(error);
+  alert(error.message);
+}
 };
   return (
       <>
