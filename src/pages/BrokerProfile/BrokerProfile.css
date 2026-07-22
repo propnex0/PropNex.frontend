@@ -1,34 +1,161 @@
 .broker-page{
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:30px 15px 80px;
 }
 
 .broker-card{
-  background:#fff;
-  padding:30px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
+    max-width:420px;
+    margin:0 auto;
+    background:#fff;
+    border-radius:20px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 .broker-photo{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  object-fit:cover;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #166534;
+    margin-bottom:15px;
+}
+
+.broker-card h1{
+    margin:0;
+    font-size:28px;
+    color:#222;
+    font-weight:700;
+}
+
+.broker-card p{
+    margin-top:8px;
+    color:#666;
+    font-size:15px;
 }
 
 .broker-actions{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  margin-top:20px;
+    display:flex;
+    gap:15px;
+    margin-top:25px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.broker-actions a{
+    text-decoration:none;
 }
 
 .broker-actions button{
-  padding:12px 25px;
-  border:none;
-  border-radius:12px;
-  cursor:pointer;
+    background:#166534;
+    color:#fff;
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.broker-actions button:hover{
+    background:#14532d;
+    transform:translateY(-2px);
+}
+
+.broker-listings{
+    max-width:1200px;
+    margin:40px auto 0;
+}
+
+.broker-listings h2{
+    font-size:28px;
+    margin-bottom:25px;
+    color:#222;
+}
+
+.broker-listings{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.broker-property{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    text-decoration:none;
+    color:#222;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.broker-property:hover{
+    transform:translateY(-6px);
+}
+
+.broker-property img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.broker-property h3{
+    margin:15px;
+    font-size:20px;
+}
+
+.broker-property p{
+    margin:0 15px 15px;
+    color:#555;
+    font-size:15px;
+}
+
+@media(max-width:768px){
+
+.broker-page{
+padding:20px 12px 90px;
+}
+
+.broker-card{
+padding:25px 15px;
+}
+
+.broker-photo{
+width:100px;
+height:100px;
+}
+
+.broker-card h1{
+font-size:24px;
+}
+
+.broker-actions{
+flex-direction:column;
+}
+
+.broker-actions button{
+width:100%;
+}
+
+.broker-listings{
+grid-template-columns:1fr;
+}
+
+}
+
+.broker-page{
+  margin-left:270px;
+  padding:20px;
+  min-height:100vh;
+}
+
+@media(max-width:768px){
+  .broker-page{
+    margin-left:0;
+    padding:15px;
+    padding-bottom:90px;
+  }
 }

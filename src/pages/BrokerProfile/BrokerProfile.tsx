@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./BrokerProfile.css";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Header/Header";
 
 const getMediaUrl = (url: string) => {
   if (!url) return "";
@@ -55,6 +57,9 @@ const BrokerProfile = () => {
   }
 
   return (
+     <>
+      <Sidebar />
+      <Header />
 
     <div className="broker-page">
 
@@ -137,7 +142,7 @@ const BrokerProfile = () => {
       </div>
 
     </div>
-
+</>
   );
 
 };
