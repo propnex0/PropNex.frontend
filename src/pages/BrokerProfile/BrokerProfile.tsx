@@ -118,7 +118,6 @@ const BrokerProfile = () => {
     <div className="photo-wrapper">
 
       <img
-loading="lazy"
         className="broker-photo"
         src={
           broker.photo
@@ -435,50 +434,26 @@ Featured Properties
 
         <div className="property-content">
 
-          <h3>
+  <h3>{item.title || "Property"}</h3>
 
-            {item.title || "Property"}
+  <h4 className="card-price">
+    ₹ {Number(item.price || 0).toLocaleString("en-IN")}
+  </h4>
 
-          </h3>
+  <p className="card-type">
+    {item.propertyType || "Apartment"}
+  </p>
 
-          <p className="property-location">
+  <p className="property-location">
+    <FaMapMarkerAlt />
+    <span>{item.location || item.city || "Jaipur"}</span>
+  </p>
 
-            <FaMapMarkerAlt />
-
-            <span>
-
-              {item.location || item.city || "Jaipur"}
-
-            </span>
-
-          </p>
-
-          <div className="property-info">
-
-  <div>
-    <strong>{item.bhk || "N/A"}</strong>
-    <span>BHK</span>
-  </div>
-
-  <div>
-    <strong>{item.bathrooms || "N/A"}</strong>
-    <span>Bath</span>
-  </div>
-
-  <div>
-    <strong>{item.carpetArea || item.area || "N/A"}</strong>
-    <span>Sq.ft</span>
+  <div className="view-property-btn">
+    View Details
   </div>
 
 </div>
-
-          <div className="view-property-btn">
-
-            View Details →
-
-          </div>
-
-        </div>
 
       </Link>
 
