@@ -1,7 +1,13 @@
 import "./PropertyDetails.css";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+const getMediaUrl = (url: string) => {
+  if (!url) return "";
 
+  return url.startsWith("http")
+    ? url
+    : `https://prop-nex-backend.vercel.app${url}`;
+};
 const PropertyDetails = () => {
   const { id } = useParams();
 const navigate = useNavigate();
@@ -82,6 +88,9 @@ const prevImage = () => {
         setProperty(data);
 
         console.log(data);
+        console.log("Images =", data.images);
+console.log("Agent Photo =", data.agentPhoto);
+console.log("Video =", data.video);
 console.log("VIDEO =", data.video);
 console.log("AGENT PHOTO =", data.agentPhoto);
 console.log("BROKER =", data.brokerName);
@@ -129,19 +138,20 @@ console.log("AGENCY =", data.agencyName);
     }}
   >
     <source
-      src={`https://prop-nex-backend.vercel.app${selectedVideo}`}
+      src={getMediaUrl(selectedVideo)}
       type="video/mp4"
     />
   </video>
 ) : (
   selectedImage && (
    <img
-  src={`https://prop-nex-backend.vercel.app${selectedImage}`}
+  src={getMediaUrl(selectedImage)}
   alt={property.title}
-onClick={() => {
-  setViewerType("image");
-  setShowViewer(true);
-}}  style={{ cursor: "zoom-in" }}
+  onClick={() => {
+    setViewerType("image");
+    setShowViewer(true);
+  }}
+  style={{ cursor: "zoom-in" }}
 />
   )
 )}
@@ -153,7 +163,7 @@ onClick={() => {
   {property.images?.map((img: string, index: number) => (
     <img
       key={index}
-      src={`https://prop-nex-backend.vercel.app${img}`}
+      src={getMediaUrl(img)}
       alt=""
       className="thumbnail-img"
 onClick={() => {
@@ -194,7 +204,7 @@ onClick={() => {
   }}
 >
       <source
-        src={`https://prop-nex-backend.vercel.app${property.video}`}
+        src={getMediaUrl(property.video)}
         type="video/mp4"
       />
         <span className="play-icon">▶</span>
@@ -271,7 +281,7 @@ onClick={() => {
         <div className="agent-card">
 
   <img
-    src={`https://prop-nex-backend.vercel.app${property.agentPhoto}`}
+    src={getMediaUrl(property.agentPhoto)}
     alt=""
     className="agent-photo"
   />
@@ -585,7 +595,7 @@ navigate(
     </span>
 
     <img
-      src={`https://prop-nex-backend.vercel.app${selectedImage}`}
+      src={getMediaUrl(selectedImage)}
       alt=""
       className="viewer-image"
     />
