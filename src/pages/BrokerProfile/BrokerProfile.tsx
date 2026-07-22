@@ -118,6 +118,7 @@ const BrokerProfile = () => {
     <div className="photo-wrapper">
 
       <img
+loading="lazy"
         className="broker-photo"
         src={
           broker.photo
@@ -426,7 +427,7 @@ Featured Properties
 
           <span className="property-price">
 
-            ₹ {item.price}
+            ₹ {Number(item.price).toLocaleString("en-IN")}
 
           </span>
 
@@ -436,7 +437,7 @@ Featured Properties
 
           <h3>
 
-            {item.title}
+            {item.title || "Property"}
 
           </h3>
 
@@ -446,7 +447,7 @@ Featured Properties
 
             <span>
 
-              {item.location || item.city}
+              {item.location || item.city || "Jaipur"}
 
             </span>
 
@@ -454,49 +455,28 @@ Featured Properties
 
           <div className="property-info">
 
-            <div>
+  <div>
+    <strong>{item.bhk || "N/A"}</strong>
+    <span>BHK</span>
+  </div>
 
-              <strong>
+  <div>
+    <strong>{item.bathrooms || "N/A"}</strong>
+    <span>Bath</span>
+  </div>
 
-                {item.bhk || "--"}
+  <div>
+    <strong>{item.carpetArea || item.area || "N/A"}</strong>
+    <span>Sq.ft</span>
+  </div>
 
-              </strong>
+</div>
 
-              <span>BHK</span>
-
-            </div>
-
-            <div>
-
-              <strong>
-
-                {item.bathrooms || "--"}
-
-              </strong>
-
-              <span>Bath</span>
-
-            </div>
-
-            <div>
-
-              <strong>
-
-                {item.carpetArea || "--"}
-
-              </strong>
-
-              <span>Sq.ft</span>
-
-            </div>
-
-          </div>
-
-          <button className="view-property-btn">
+          <div className="view-property-btn">
 
             View Details →
 
-          </button>
+          </div>
 
         </div>
 
