@@ -64,16 +64,26 @@ const EditListing = () => {
         formData.append("images", images[i]);
       }
     }
-
+const userInfo = JSON.parse(
+  localStorage.getItem("userInfo") || "{}"
+);
     const response = await fetch(
-      `https://prop-nex-backend.vercel.app/api/listings/${id}`,
-      {
-        method: "PUT",
-        body: formData,
-      }
-    );
+  `https://prop-nex-backend.vercel.app/api/listings/${id}`,
+  {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${userInfo.token}`,
+    },
+    body: formData,
+  }
+);
 
     const data = await response.json();
+
+    if (!response.ok) {
+  alert(data.message);
+  return;
+}
 
     console.log(data);
 
