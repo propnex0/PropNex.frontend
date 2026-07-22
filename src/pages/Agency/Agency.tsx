@@ -11,14 +11,27 @@ const [copied, setCopied] = useState(false);
 const [search, setSearch] = useState("");
 const navigate = useNavigate();
 
+const getUserInfo = () => {
+  return JSON.parse(
+    localStorage.getItem("userInfo") || "{}"
+  );
+};
+
  useEffect(() => {
 
   const loadAgency = async () => {
 
-    const savedAgency = JSON.parse(
-      localStorage.getItem("agency") || "null"
-    );
+    const userInfo = getUserInfo();
 
+if(!userInfo._id){
+  return;
+}
+
+const savedAgency = JSON.parse(
+  localStorage.getItem(
+    `agency_${userInfo._id}`
+  ) || "null"
+);
 
     if (!savedAgency) return;
 
@@ -54,10 +67,12 @@ const navigate = useNavigate();
       };
 
 
-      localStorage.setItem(
-        "agency",
-        JSON.stringify(updatedAgency)
-      );
+      const userInfo = getUserInfo();
+
+localStorage.setItem(
+  `agency_${userInfo._id}`,
+  JSON.stringify(updatedAgency)
+);
 
 
       setAgency({
@@ -83,20 +98,21 @@ const navigate = useNavigate();
 }, []);
 useEffect(() => {
 
-  const fetchLeads = async()=>{
+  if (!agency?.code) return;
 
-    try{
+  const fetchLeads = async () => {
+
+    try {
 
       const res = await fetch(
-        `https://prop-nex-backend.vercel.app/api/leads?agencyCode=${agency?.code || ""}`
+        `https://prop-nex-backend.vercel.app/api/leads?agencyCode=${agency.code}`
       );
 
       const data = await res.json();
 
       setLeadCount(data.length);
 
-
-    }catch(error){
+    } catch (error) {
 
       console.log(error);
 
@@ -104,11 +120,9 @@ useEffect(() => {
 
   };
 
-
   fetchLeads();
 
-
-},[]);
+}, [agency]);
 
   const createAgency = async () => {
     
@@ -130,22 +144,27 @@ useEffect(() => {
 
   try {
 
-    const response = await fetch(
-      "https://prop-nex-backend.vercel.app/api/agency/create",
-      {
-        method: "POST",
+   
 
-        headers: {
-          "Content-Type": "application/json",
-        },
+const userInfo = getUserInfo();
 
-        body: JSON.stringify({
-          name: agencyName,
-          ownerName: ownerName,
-          code: agencyCode,
-        }),
-      }
-    );
+const response = await fetch(
+"https://prop-nex-backend.vercel.app/api/agency/create",
+{
+  method:"POST",
+
+  headers:{
+    "Content-Type":"application/json",
+  },
+
+  body: JSON.stringify({
+    name: agencyName,
+    ownerName: ownerName,
+    code: agencyCode,
+    userId:userInfo._id
+  }),
+}
+);
 
 
     const data = await response.json();
@@ -153,10 +172,14 @@ useEffect(() => {
 
     if(response.ok){
 
-      localStorage.setItem(
-        "agency",
-        JSON.stringify(data.agency)
-      );
+   
+
+const userInfo = getUserInfo();
+
+localStorage.setItem(
+  `agency_${userInfo._id}`,
+  JSON.stringify(data.agency)
+);
 
 
       setAgency(data.agency);
@@ -198,28 +221,33 @@ const joinAgency = async () => {
 
   try {
 
-    const response = await fetch(
-      "https://prop-nex-backend.vercel.app/api/agency/join",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          code,
-          memberName,
-        }),
-      }
-    );
+    const userInfo = getUserInfo();
+
+const response = await fetch(
+  "https://prop-nex-backend.vercel.app/api/agency/join",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      code,
+      memberName,
+      userId: userInfo._id
+    }),
+  }
+);
 
     const data = await response.json();
 
     if (response.ok) {
 
-      localStorage.setItem(
-        "agency",
-        JSON.stringify(data.agency)
-      );
+    const userInfo = getUserInfo();
+
+localStorage.setItem(
+  `agency_${userInfo._id}`,
+  JSON.stringify(data.agency)
+);
 
       setAgency(data.agency);
 
@@ -502,12 +530,12 @@ Share your agency code to invite members.
                   ),
               };
 
-              localStorage.setItem(
-                "agency",
-                JSON.stringify(
-                  updatedAgency
-                )
-              );
+              const userInfo = getUserInfo();
+
+localStorage.setItem(
+  `agency_${userInfo._id}`,
+  JSON.stringify(updatedAgency)
+);
 
               setAgency(
                 updatedAgency
@@ -598,12 +626,12 @@ Share your agency code to invite members.
           };
 
 
-          localStorage.setItem(
-            "agency",
-            JSON.stringify(
-              updatedAgency
-            )
-          );
+          const userInfo = getUserInfo();
+
+localStorage.setItem(
+  `agency_${userInfo._id}`,
+  JSON.stringify(updatedAgency)
+);
 
 
           setAgency(
@@ -647,12 +675,13 @@ Share your agency code to invite members.
       )
     )
       return;
+const userInfo = getUserInfo();
 
-    localStorage.removeItem(
-      "agency"
-    );
+localStorage.removeItem(
+  `agency_${userInfo._id}`
+);
 
-    window.location.reload();
+setAgency(null);
 
   }}
 >
