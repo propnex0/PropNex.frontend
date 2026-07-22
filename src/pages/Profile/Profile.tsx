@@ -61,7 +61,7 @@ const data = await res.json();
 
 console.log("PROFILE =", data);
 console.log("PHOTO =", data.photo);
-alert(data.photo);
+
 setUser(data);
 
 
