@@ -806,9 +806,20 @@ console.log(error);
 </div>
 <div className="recent-leads">
 
+  <div className="recent-leads-header">
+
   <h2>
     🔥 Recent Leads
   </h2>
+
+  <Link
+    to="/leads"
+    className="all-leads-btn"
+  >
+    View All Leads
+  </Link>
+
+</div>
 
   {
     recentLeads.length === 0

@@ -1,6 +1,8 @@
 import "./Leads.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Header/Header";
 
 const Leads = () => {
 
@@ -408,6 +410,7 @@ const Leads = () => {
 
 
                 return (
+                    
 
                     searchMatch &&
 
@@ -428,6 +431,9 @@ const Leads = () => {
                 new Date(a.createdAt).getTime()
         );
     return (
+        <>
+      <Sidebar />
+      <Header />
         <div className="leads-page">
             <div className="leads-header">
                 <h1>Leads</h1>
@@ -690,6 +696,7 @@ const Leads = () => {
                 }
             </div>
         </div>
+        </>
     );
 };
 export default Leads;

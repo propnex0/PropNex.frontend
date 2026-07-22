@@ -648,3 +648,17 @@
   }
 
 }
+
+.leads-page{
+  margin-left:270px;
+  padding:20px;
+  min-height:100vh;
+}
+
+@media(max-width:768px){
+  .leads-page{
+    margin-left:0;
+    padding:15px;
+    padding-bottom:90px;
+  }
+}
