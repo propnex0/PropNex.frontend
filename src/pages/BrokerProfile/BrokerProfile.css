@@ -1,47 +1,63 @@
+/* =========================
+   BROKER PAGE
+========================= */
+
 .broker-page{
     min-height:100vh;
-    background:#f5f7fb;
-    padding:30px 15px 80px;
+    padding:60px 40px;
+    background:linear-gradient(180deg,#eef4ff,#f8fafc);
 }
 
+/* =========================
+   PROFILE CARD
+========================= */
+
 .broker-card{
-    max-width:420px;
-    margin:0 auto;
-    background:#fff;
-    border-radius:20px;
-    padding:30px 20px;
+    width:430px;
+    margin:0 auto 60px;
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(15px);
+    border-radius:28px;
+    padding:40px;
     text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.08),
+    0 5px 15px rgba(0,0,0,.05);
+    border:1px solid rgba(255,255,255,.6);
+    transition:.35s;
+}
+
+.broker-card:hover{
+    transform:translateY(-8px);
 }
 
 .broker-photo{
-    width:120px;
-    height:120px;
+    width:130px;
+    height:130px;
     border-radius:50%;
     object-fit:cover;
-    border:4px solid #166534;
-    margin-bottom:15px;
+    border:5px solid #166534;
+    box-shadow:0 12px 25px rgba(22,101,52,.35);
 }
 
 .broker-card h1{
-    margin:0;
-    font-size:28px;
-    color:#222;
+    margin-top:18px;
+    font-size:34px;
     font-weight:700;
+    color:#111827;
 }
 
 .broker-card p{
     margin-top:8px;
-    color:#666;
-    font-size:15px;
+    color:#64748b;
+    font-size:16px;
 }
 
 .broker-actions{
+    margin-top:30px;
     display:flex;
-    gap:15px;
-    margin-top:25px;
     justify-content:center;
-    flex-wrap:wrap;
+    gap:18px;
 }
 
 .broker-actions a{
@@ -49,113 +65,175 @@
 }
 
 .broker-actions button{
-    background:#166534;
-    color:#fff;
     border:none;
-    padding:12px 24px;
-    border-radius:10px;
     cursor:pointer;
+    padding:14px 34px;
+    border-radius:14px;
     font-size:15px;
     font-weight:600;
+    color:#fff;
+    background:#166534;
     transition:.3s;
+    box-shadow:0 12px 25px rgba(22,101,52,.25);
 }
 
 .broker-actions button:hover{
+    transform:translateY(-4px);
     background:#14532d;
-    transform:translateY(-2px);
 }
 
-.broker-listings{
-    max-width:1200px;
-    margin:40px auto 0;
-}
+/* =========================
+   PROPERTY SECTION
+========================= */
 
 .broker-listings h2{
-    font-size:28px;
-    margin-bottom:25px;
-    color:#222;
+    font-size:34px;
+    color:#111827;
+    margin-bottom:35px;
+    font-weight:700;
 }
 
 .broker-listings{
+    max-width:1400px;
+    margin:auto;
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
+    grid-template-columns:
+    repeat(auto-fill,minmax(310px,1fr));
+
+    gap:28px;
 }
 
+/* =========================
+   PROPERTY CARD
+========================= */
+
 .broker-property{
+
     background:#fff;
-    border-radius:18px;
+
+    border-radius:24px;
+
     overflow:hidden;
+
     text-decoration:none;
-    color:#222;
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
-    transition:.3s;
+
+    color:#111827;
+
+    box-shadow:
+    0 18px 35px rgba(0,0,0,.08);
+
+    transition:.35s;
+
 }
 
 .broker-property:hover{
-    transform:translateY(-6px);
+
+    transform:
+    translateY(-10px);
+
+    box-shadow:
+    0 28px 50px rgba(0,0,0,.15);
+
 }
 
 .broker-property img{
+
     width:100%;
-    height:220px;
+
+    height:240px;
+
     object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.broker-property:hover img{
+
+    transform:scale(1.06);
+
 }
 
 .broker-property h3{
-    margin:15px;
-    font-size:20px;
+
+    margin:18px 20px 8px;
+
+    font-size:24px;
+
+    font-weight:700;
+
 }
 
 .broker-property p{
-    margin:0 15px 15px;
-    color:#555;
+
+    margin:0 20px 12px;
+
+    color:#64748b;
+
     font-size:15px;
+
 }
+
+.broker-property p:nth-child(3){
+
+    color:#166534;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:768px){
 
 .broker-page{
-padding:20px 12px 90px;
+
+padding:25px 15px 100px;
+
 }
 
 .broker-card{
-padding:25px 15px;
+
+width:100%;
+
+padding:28px 18px;
+
 }
 
 .broker-photo{
-width:100px;
-height:100px;
+
+width:110px;
+height:110px;
+
 }
 
 .broker-card h1{
-font-size:24px;
+
+font-size:28px;
+
 }
 
 .broker-actions{
+
 flex-direction:column;
+
 }
 
 .broker-actions button{
+
 width:100%;
+
 }
 
 .broker-listings{
+
 grid-template-columns:1fr;
-}
 
 }
 
-.broker-page{
-  margin-left:270px;
-  padding:20px;
-  min-height:100vh;
-}
-
-@media(max-width:768px){
-  .broker-page{
-    margin-left:0;
-    padding:15px;
-    padding-bottom:90px;
-  }
 }
