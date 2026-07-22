@@ -241,9 +241,30 @@ if (images) {
 }
 
 
+let videoUrl = "";
+
 if (video) {
-  formData.append("video", video);
+  const videoData = new FormData();
+
+  videoData.append("file", video);
+  videoData.append("upload_preset", "propnex_upload");
+
+  const uploadRes = await fetch(
+    "https://api.cloudinary.com/v1_1/ui7whmwd/video/upload",
+    {
+      method: "POST",
+      body: videoData,
+    }
+  );
+
+  const uploadJson = await uploadRes.json();
+
+  console.log("Cloudinary =", uploadJson);
+
+  videoUrl = uploadJson.secure_url;
 }
+
+formData.append("video", videoUrl);
 
    
 const userInfo = JSON.parse(
