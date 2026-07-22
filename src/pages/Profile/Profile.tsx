@@ -3,6 +3,13 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
 import "./Profile.css";
+const getMediaUrl = (url: string) => {
+  if (!url) return "";
+
+  return url.startsWith("http")
+    ? url
+    : `https://prop-nex-backend.vercel.app${url}`;
+};
 
 
 const Profile = () => {
@@ -52,7 +59,8 @@ Authorization:`Bearer ${userInfo.token}`
 
 const data = await res.json();
 
-
+console.log("PROFILE =", data);
+console.log("PHOTO =", data.photo);
 setUser(data);
 
 
@@ -257,9 +265,7 @@ user.photo ?
 
 <img
 
-src={
-`https://prop-nex-backend.vercel.app${user.photo}`
-}
+src={getMediaUrl(user.photo)}
 
 alt="profile"
 
@@ -582,9 +588,7 @@ property.images.length > 0
 <img
 
 
-src={
-`https://prop-nex-backend.vercel.app${property.images[0]}`
-}
+src={getMediaUrl(property.images[0])}
 
 
 alt="property"
