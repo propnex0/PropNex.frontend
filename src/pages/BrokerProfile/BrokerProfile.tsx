@@ -45,11 +45,22 @@ const BrokerProfile = () => {
 )
 
       ]);
+const brokerData = await brokerRes.json();
 
-      const brokerData = await brokerRes.json();
+console.log("BROKER URL =", brokerRes.url);
+console.log("BROKER STATUS =", brokerRes.status);
+console.log("BROKER DATA =", brokerData);
+
+const listingData = await listingRes.json();
+
+console.log("LISTING URL =", listingRes.url);
+console.log("LISTING STATUS =", listingRes.status);
+console.log("LISTINGS =", listingData);
+
+      // const brokerData = await brokerRes.json();
       console.log("BROKER =", brokerData);
 
-      const listingData = await listingRes.json();
+      // const listingData = await listingRes.json();
       console.log("LISTINGS =", listingData);
 
       setBroker(brokerData);
