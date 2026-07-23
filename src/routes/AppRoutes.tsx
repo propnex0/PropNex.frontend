@@ -88,7 +88,7 @@ const AppRoutes = () => {
 <Route path="/register" element={<Register />} />
 
 <Route
-  path="/broker/:name"
+  path="/broker/:id"
   element={<BrokerProfile />}
 />
 
