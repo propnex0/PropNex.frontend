@@ -192,7 +192,36 @@ console.log(error);
 
 };
 
+const shareProfile = async () => {
 
+  const profileUrl =
+    `${window.location.origin}/broker/${encodeURIComponent(user.name)}`;
+
+  if (navigator.share) {
+
+    try {
+
+      await navigator.share({
+        title: `${user.name} - PropNex`,
+        text: "Check out my PropNex Profile",
+        url: profileUrl,
+      });
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+
+  } else {
+
+    await navigator.clipboard.writeText(profileUrl);
+
+    alert("Profile link copied successfully!");
+
+  }
+
+};
 
 
 
@@ -231,7 +260,9 @@ Edit
 
 
 
-<button>
+<button
+onClick={shareProfile}
+>
 
 Share
 
