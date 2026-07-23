@@ -34,11 +34,12 @@ const Pricing = () => {
 
 const [phoneNumber, setPhoneNumber] =
   useState("");
-if (!phoneNumber) {
+
+  const payNow = async () => {
+   if (phoneNumber.trim().length !== 10) {
   setShowPhonePopup(true);
   return;
 }
-  const payNow = async () => {
   try {
     const userInfo = JSON.parse(
       localStorage.getItem("userInfo") || "{}"
@@ -74,7 +75,7 @@ if (!phoneNumber) {
           customerId: userInfo._id,
           customerName: userInfo.name,
           customerEmail: userInfo.email,
-          customerPhone: userInfo.phone,
+          customerPhone: phoneNumber,
         }),
       }
     );
@@ -235,19 +236,21 @@ const cashfree = window.Cashfree({
       />
 
       <button
-        onClick={() => {
-          if (phoneNumber.length !== 10) {
-            alert("Enter valid mobile number");
-            return;
-          }
+  onClick={() => {
+    if (phoneNumber.length !== 10) {
+      alert("Enter valid mobile number");
+      return;
+    }
 
-          setShowPhonePopup(false);
+    setShowPhonePopup(false);
 
-          payNow();
-        }}
-      >
-        Continue To Payment
-      </button>
+    setTimeout(() => {
+      payNow();
+    }, 100);
+  }}
+>
+  Continue To Payment
+</button>
 
     </div>
 
