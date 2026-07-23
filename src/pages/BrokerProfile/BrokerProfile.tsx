@@ -23,18 +23,14 @@ const BrokerProfile = () => {
   const { name } = useParams();
 
   const [broker, setBroker] = useState<any>(null);
-
   const [listings, setListings] = useState<any[]>([]);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
-    fetchData();
-
+    loadBroker();
   }, [name]);
 
-  const fetchData = async () => {
+  const loadBroker = async () => {
 
     try {
 
@@ -73,263 +69,94 @@ const BrokerProfile = () => {
   };
 
   if (loading) {
-
-    return <div className="loading">Loading...</div>;
-
+    return (
+      <div className="bp-loading">
+        Loading...
+      </div>
+    );
   }
 
   if (!broker) {
-
-    return <div className="loading">Broker Not Found</div>;
-
+    return (
+      <div className="bp-loading">
+        Broker Not Found
+      </div>
+    );
   }
 
   return (
 
-    <div className="broker-page">
+    <div className="bp-page">
 
-      <div className="hero-section">
+      <section className="bp-hero">
 
-        <div className="hero-banner"></div>
+        <div className="bp-banner"></div>
 
-        <div className="profile-card">
+        <div className="bp-profile">
 
-          <div className="profile-top">
+          <div className="bp-photo-box">
 
             <img
               src={
                 broker.photo
                   ? getMediaUrl(broker.photo)
-                  : "https://via.placeholder.com/180"
+                  : "https://via.placeholder.com/220"
               }
-              className="broker-photo"
-              alt=""
+              alt={broker.name}
+              className="bp-photo"
             />
 
-            <div className="verify-icon">
+            <div className="bp-verify">
               <FaCheckCircle />
             </div>
 
           </div>
 
-          <h1>{broker.name}</h1>
+          <h1 className="bp-name">
+            {broker.name}
+          </h1>
 
-          <h3>
+          <p className="bp-company">
             {broker.agencyName || "Property Consultant"}
-          </h3>
+          </p>
 
-          <div className="broker-location">
+          <div className="bp-location">
 
             <FaMapMarkerAlt />
 
             <span>
-
               {broker.city || "Jaipur"}
-
             </span>
 
           </div>
 
-          <div className="stats">            <div className="stat-card">
-              <h2>{listings.length}</h2>
-              <p>Listings</p>
-            </div>
-
-            <div className="stat-card">
-              <h2>{broker.experience || 0}</h2>
-              <p>Years</p>
-            </div>
-
-            <div className="stat-card">
-              <h2>{broker.dealsClosed || 0}</h2>
-              <p>Deals</p>
-            </div>
-
-            <div className="stat-card">
-              <h2>4.9★</h2>
-              <p>Rating</p>
-            </div>
-
+          <div className="bp-stats">          <div className="bp-stat">
+            <h2>{listings.length}</h2>
+            <p>Properties</p>
           </div>
 
-          <div className="action-buttons">
+          <div className="bp-stat">
+            <h2>{broker.experience || 0}</h2>
+            <p>Years</p>
+          </div>
 
-            <a
-              href={`tel:${broker.phone}`}
-              className="call-btn"
-            >
-              <FaPhoneAlt />
-              <span>Call Now</span>
-            </a>
+          <div className="bp-stat">
+            <h2>{broker.dealsClosed || 0}</h2>
+            <p>Deals</p>
+          </div>
 
-            <a
-              href={`https://wa.me/${broker.whatsapp || broker.phone}`}
-              target="_blank"
-              rel="noreferrer"
-              className="whatsapp-btn"
-            >
-              <FaWhatsapp />
-              <span>WhatsApp</span>
-            </a>
-
+          <div className="bp-stat">
+            <h2>4.9★</h2>
+            <p>Rating</p>
           </div>
 
         </div>
 
-      </div>
-
-      {/* ==========================
-          PROPERTIES
-      ========================== */}
-
-      <div className="properties-header">
-
-        <h2>Featured Properties</h2>
-
-        <p>
-          {listings.length} Active Listings
-        </p>
-
-      </div>
-
-      <div className="property-grid">        {
-          listings.length === 0 ? (
-
-            <div className="empty-card">
-
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/7486/7486740.png"
-                alt=""
-              />
-
-              <h2>No Properties Found</h2>
-
-              <p>
-                This broker hasn't uploaded any property yet.
-              </p>
-
-            </div>
-
-          ) : (
-
-            listings.map((item: any) => (
-
-              <Link
-                key={item._id}
-                to={`/property/${item._id}`}
-                className="property-card"
-              >
-
-                <div className="image-wrapper">
-
-                  <img
-                    src={
-                      item.images?.length
-                        ? getMediaUrl(item.images[0])
-                        : "https://via.placeholder.com/600x400?text=No+Image"
-                    }
-                    alt={item.title}
-                  />
-
-                  <span className="property-type">
-                    {item.propertyType || "Property"}
-                  </span>
-
-                </div>
-
-                <div className="property-content">
-
-                  <h2 className="price">
-                    ₹ {Number(item.price || 0).toLocaleString("en-IN")}
-                  </h2>
-
-                  <h3>
-                    {item.title || "Property"}
-                  </h3>
-
-                  <p className="property-location">
-
-                    <FaMapMarkerAlt />
-
-                    <span>
-                      {item.location || item.city || "Jaipur"}
-                    </span>
-
-                  </p>
-
-                  <div className="view-property-btn">
-                    View Details
-                  </div>
-
-                </div>
-
-              </Link>
-
-            ))
-
-          )
-        }
-
-      </div>      {/* ==========================
-          ABOUT BROKER
-      ========================== */}
-
-      <div className="about-section">
-
-        <div className="about-card">
-
-          <h2>About Broker</h2>
-
-          <p>
-            {
-              broker.bio ||
-              "Experienced real estate consultant helping buyers and sellers find the perfect property with trusted guidance and transparent deals."
-            }
-          </p>
-
-        </div>
-
-        <div className="info-card">
-
-          <h2>Professional Details</h2>
-
-          <div className="info-row">
-            <span>Experience</span>
-            <strong>{broker.experience || 0} Years</strong>
-          </div>
-
-          <div className="info-row">
-            <span>Deals Closed</span>
-            <strong>{broker.dealsClosed || 0}</strong>
-          </div>
-
-          <div className="info-row">
-            <span>Response Time</span>
-            <strong>{broker.responseTime || "Within 30 Min"}</strong>
-          </div>
-
-          <div className="info-row">
-            <span>RERA</span>
-            <strong>{broker.reraNumber || "Verified"}</strong>
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* ==========================
-          CONTACT
-      ========================== */}
-
-      <div className="contact-card">
-
-        <h2>Contact Broker</h2>
-
-        <div className="contact-grid">
+        <div className="bp-buttons">
 
           <a
             href={`tel:${broker.phone}`}
-            className="contact-box"
+            className="bp-call-btn"
           >
             <FaPhoneAlt />
             <span>Call Now</span>
@@ -339,7 +166,7 @@ const BrokerProfile = () => {
             href={`https://wa.me/${broker.whatsapp || broker.phone}`}
             target="_blank"
             rel="noreferrer"
-            className="contact-box whatsapp"
+            className="bp-whatsapp-btn"
           >
             <FaWhatsapp />
             <span>WhatsApp</span>
@@ -349,21 +176,196 @@ const BrokerProfile = () => {
 
       </div>
 
+    </section>
+
+    {/* ==========================
+        PROPERTIES
+    ========================== */}
+
+    <div className="bp-property-header">
+
+      <h2>Featured Properties</h2>
+
+      <p>
+        {listings.length} Active Listings
+      </p>
+
+    </div>
+
+    <div className="bp-property-grid">{
+  listings.length === 0 ? (
+
+    <div className="bp-empty">
+
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/7486/7486740.png"
+        alt="No Property"
+      />
+
+      <h2>No Properties Found</h2>
+
+      <p>
+        This broker hasn't uploaded any property yet.
+      </p>
+
+    </div>
+
+  ) : (
+
+    listings.map((item: any) => (
+
+      <Link
+        key={item._id}
+        to={`/property/${item._id}`}
+        className="bp-card"
+      >
+
+        <div className="bp-card-image">
+
+          <img
+            src={
+              item.images?.length
+                ? getMediaUrl(item.images[0])
+                : "https://via.placeholder.com/700x450?text=No+Image"
+            }
+            alt={item.title}
+          />
+
+          <span className="bp-card-tag">
+            {item.propertyType || "Property"}
+          </span>
+
+        </div>
+
+        <div className="bp-card-body">
+
+          <h2 className="bp-card-price">
+            ₹ {Number(item.price || 0).toLocaleString("en-IN")}
+          </h2>
+
+          <h3 className="bp-card-title">
+            {item.title || "Property"}
+          </h3>
+
+          <p className="bp-card-location">
+
+            <FaMapMarkerAlt />
+
+            <span>
+              {item.location || item.city || "Jaipur"}
+            </span>
+
+          </p>
+
+          <div className="bp-card-button">
+
+            View Details
+
+          </div>
+
+        </div>
+
+      </Link>
+
+    ))
+
+  )
+}
+
+</div>      {/* ==========================
+          ABOUT BROKER
+      ========================== */}
+
+      <section className="bp-about">
+
+        <div className="bp-about-card">
+
+          <h2>About Broker</h2>
+
+          <p>
+            {
+              broker.bio ||
+              "Experienced property consultant helping buyers and sellers with trusted guidance, transparent deals and premium real estate services."
+            }
+          </p>
+
+        </div>
+
+        <div className="bp-info-card">
+
+          <h2>Professional Details</h2>
+
+          <div className="bp-info-row">
+            <span>Experience</span>
+            <strong>{broker.experience || 0} Years</strong>
+          </div>
+
+          <div className="bp-info-row">
+            <span>Deals Closed</span>
+            <strong>{broker.dealsClosed || 0}</strong>
+          </div>
+
+          <div className="bp-info-row">
+            <span>Response Time</span>
+            <strong>{broker.responseTime || "Within 30 Minutes"}</strong>
+          </div>
+
+          <div className="bp-info-row">
+            <span>RERA</span>
+            <strong>{broker.reraNumber || "Verified"}</strong>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ==========================
+          CONTACT
+      ========================== */}
+
+      <section className="bp-contact">
+
+        <h2>Contact Broker</h2>
+
+        <div className="bp-contact-grid">
+
+          <a
+            href={`tel:${broker.phone}`}
+            className="bp-contact-btn"
+          >
+            <FaPhoneAlt />
+            <span>Call Now</span>
+          </a>
+
+          <a
+            href={`https://wa.me/${broker.whatsapp || broker.phone}`}
+            target="_blank"
+            rel="noreferrer"
+            className="bp-contact-btn bp-contact-whatsapp"
+          >
+            <FaWhatsapp />
+            <span>WhatsApp</span>
+          </a>
+
+        </div>
+
+      </section>
+
       {/* ==========================
           FOOTER
       ========================== */}
 
-      <div className="broker-footer">
+      <footer className="bp-footer">
 
         <h3>
           Powered by <span>PropNex</span>
         </h3>
 
         <p>
-          Buy • Sell • Rent Properties
+          Buy • Sell • Rent • Commercial • Plots
         </p>
 
-      </div>
+      </footer>
 
     </div>
 
