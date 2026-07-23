@@ -20,7 +20,7 @@ const getMediaUrl = (url: string) => {
 
 const BrokerProfile = () => {
 
-  const { name } = useParams();
+  const { id } = useParams();
 
   const [broker, setBroker] = useState<any>(null);
   const [listings, setListings] = useState<any[]>([]);
@@ -28,7 +28,7 @@ const BrokerProfile = () => {
 
   useEffect(() => {
     loadBroker();
-  }, [name]);
+  }, [id]);
 
   const loadBroker = async () => {
 
@@ -37,12 +37,12 @@ const BrokerProfile = () => {
       const [brokerRes, listingRes] = await Promise.all([
 
         fetch(
-          `https://prop-nex-backend.vercel.app/api/auth/broker/${name}`
+          `https://prop-nex-backend.vercel.app/api/auth/broker/${id}`
         ),
 
         fetch(
-          `https://prop-nex-backend.vercel.app/api/listings/broker/${name}`
-        ),
+  `https://prop-nex-backend.vercel.app/api/listings/broker/${id}`
+)
 
       ]);
 
