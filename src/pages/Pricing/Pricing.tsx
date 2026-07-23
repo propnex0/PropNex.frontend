@@ -29,6 +29,15 @@ const Pricing = () => {
   const [amount, setAmount] =
     useState(299);
 
+    const [showPhonePopup, setShowPhonePopup] =
+  useState(false);
+
+const [phoneNumber, setPhoneNumber] =
+  useState("");
+if (!phoneNumber) {
+  setShowPhonePopup(true);
+  return;
+}
   const payNow = async () => {
   try {
     const userInfo = JSON.parse(
@@ -209,6 +218,41 @@ const cashfree = window.Cashfree({
           </small>
 
         </div>
+        {showPhonePopup && (
+  <div className="phone-popup">
+
+    <div className="phone-card">
+
+      <h2>📱 Enter Mobile Number</h2>
+
+      <input
+        type="text"
+        placeholder="9876543210"
+        value={phoneNumber}
+        onChange={(e) =>
+          setPhoneNumber(e.target.value)
+        }
+      />
+
+      <button
+        onClick={() => {
+          if (phoneNumber.length !== 10) {
+            alert("Enter valid mobile number");
+            return;
+          }
+
+          setShowPhonePopup(false);
+
+          payNow();
+        }}
+      >
+        Continue To Payment
+      </button>
+
+    </div>
+
+  </div>
+)}
       </div>
     </>
   );
