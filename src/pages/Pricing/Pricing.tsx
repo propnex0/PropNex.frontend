@@ -12,251 +12,339 @@ declare global {
 const Pricing = () => {
   const plans = [
     {
+      id: 1,
+      name: "Basic",
       listings: 15,
       price: 299,
-      packageName: "Basic",
+      description: "Perfect for individual property owners",
     },
     {
+      id: 2,
+      name: "Premium",
       listings: 30,
       price: 499,
-      packageName: "Premium",
+      description: "Best value for brokers & builders",
+      popular: true,
     },
   ];
 
-  const [selectedPlan, setSelectedPlan] =
-    useState(15);
-
-  const [amount, setAmount] =
-    useState(299);
-
-    const [showPhonePopup, setShowPhonePopup] =
-  useState(false);
-
-const [phoneNumber, setPhoneNumber] =
-  useState("");
+  const [selectedPlan, setSelectedPlan] = useState(plans[0]);
+  const [showPhonePopup, setShowPhonePopup] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const payNow = async () => {
-   if (phoneNumber.trim().length !== 10) {
-  setShowPhonePopup(true);
-  return;
-}
-  try {
-    const userInfo = JSON.parse(
-      localStorage.getItem("userInfo") || "{}"
-    );
+    if (phoneNumber.trim().length !== 10) {
+      setShowPhonePopup(true);
+      return;
+    }
 
-    const credits =
-      selectedPlan === 15 ? 15 : 30;
+    try {
+      setLoading(true);
 
-    const packageName =
-      selectedPlan === 15
-        ? "15 Listings"
-        : "30 Listings";
+      const userInfo = JSON.parse(
+        localStorage.getItem("userInfo") || "{}"
+      );
 
-    localStorage.setItem(
-      "selectedPlan",
-      JSON.stringify({
-        credits,
-        packageName,
-        amount,
-      })
-    );
+      localStorage.setItem(
+        "selectedPlan",
+        JSON.stringify({
+          credits: selectedPlan.listings,
+          packageName: selectedPlan.name,
+          amount: selectedPlan.price,
+        })
+      );
 
-    const orderRes = await fetch(
-      "https://prop-nex-backend.vercel.app/api/payment/create-order",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-        body: JSON.stringify({
-          amount,
-          customerId: userInfo._id,
-          customerName: userInfo.name,
-          customerEmail: userInfo.email,
-          customerPhone: phoneNumber,
-        }),
+      const response = await fetch(
+        "https://prop-nex-backend.vercel.app/api/payment/create-order",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+          body: JSON.stringify({
+            amount: selectedPlan.price,
+            customerId: userInfo._id,
+            customerName: userInfo.name,
+            customerEmail: userInfo.email,
+            customerPhone: phoneNumber,
+          }),
+        }
+      );
+
+      const order = await response.json();
+
+      if (!order.payment_session_id) {
+        alert(order.message || "Payment session not found");
+        return;
       }
-    );
 
-    const order = await orderRes.json();
-    console.log("Cashfree Order =", order);
+      const cashfree = window.Cashfree({
+        mode: "production",
+      });
 
-if (!order.payment_session_id) {
-  alert("Payment session not found");
-  return;
-}
+      await cashfree.checkout({
+        paymentSessionId: order.payment_session_id,
+        redirectTarget: "_self",
+      });
+    } catch (err) {
+      console.error(err);
+      alert("Payment Failed");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-const cashfree = window.Cashfree({
-  mode: "production",
-});
 
 
-    cashfree.checkout({
-      paymentSessionId: order.payment_session_id,
-      redirectTarget: "_self",
-    });
-
-  } catch (error) {
-    console.log(error);
-    alert("Payment failed.");
-  }
-};
-
-  return (
+    return (
     <>
       <Sidebar />
       <Header />
 
       <div className="pricing-page">
-        <div className="payment-card">
+        <div className="pricing-container">
 
-          <div className="logo-box">
+          <div className="pricing-header">
+
             <img
-  src="/logo.png"
-  alt="PropNex"
-  className="site-logo"
-/>
+              src="/logo.png"
+              alt="PropNex"
+              className="site-logo"
+            />
+
+            <h1>
+              Choose Your Listing Package
+            </h1>
+
+            <p>
+              Post more properties, get genuine buyers
+              and grow your business with PropNex.
+            </p>
+
           </div>
 
-          <h1>
-            Top up your listings
-          </h1>
+          <div className="plans-grid">
 
-          <p className="subtitle">
-            One-time payment.
-            Instant activation.
-          </p>
+            {plans.map((plan) => (
 
-          <div className="plans">
-            {plans.map(
-              (plan, index) => (
-                <div
-                  key={index}
-                  className={`plan ${
-                    selectedPlan ===
-                    plan.listings
-                      ? "active-plan"
-                      : ""
-                  }`}
-                  onClick={() => {
-                    setSelectedPlan(
-                      plan.listings
-                    );
-                    setAmount(
-                      plan.price
-                    );
-                  }}
-                >
-                  {plan.listings ===
-                    30 && (
-                    <span className="best-value">
-                      BEST VALUE
-                    </span>
-                  )}
+              <div
+                key={plan.id}
+                className={`plan-card ${
+                  selectedPlan.id === plan.id
+                    ? "active-plan"
+                    : ""
+                }`}
+                onClick={() =>
+                  setSelectedPlan(plan)
+                }
+              >
 
-                  <h2>
-                    {plan.listings}
-                  </h2>
-
-                  <span className="listing-text">
-                    Listings
+                {plan.popular && (
+                  <span className="popular-badge">
+                    ⭐ MOST POPULAR
                   </span>
+                )}
 
-                  <h3>
-                    ₹{plan.price}
-                  </h3>
+                <h2>
+                  {plan.name}
+                </h2>
 
-                  <p>
-                    ₹
-                    {Math.round(
-                      plan.price /
-                        plan.listings
-                    )}
-                    /listing
-                  </p>
+                <div className="plan-price">
+
+                  ₹{plan.price}
+
                 </div>
-              )
-            )}
+
+                <h4>
+
+                  {plan.listings} Listings
+
+                </h4>
+
+                <p className="plan-desc">
+
+                  {plan.description}
+
+                </p>
+
+                <ul className="plan-list">
+
+                  <li>
+                    ✅ Instant Activation
+                  </li>
+
+                  <li>
+                    ✅ WhatsApp Sharing
+                  </li>
+
+                  <li>
+                    ✅ Unlimited Buyer Leads
+                  </li>
+
+                  <li>
+                    ✅ Dashboard Access
+                  </li>
+
+                  <li>
+                    ✅ Premium Support
+                  </li>
+
+                </ul>
+
+              </div>
+
+            ))}
+
           </div>
-<div className="pricing-alert">
-  <h3>
-    🎉 Free Listing Used Successfully
-  </h3>
 
-  <p>
-    To publish more properties and get more leads,
-    choose a listing package below.
-  </p>
-</div>
-          <ul className="feature-list">
-            <li>
-              ✓ Post via WhatsApp
-              instantly
-            </li>
-            <li>
-              ✓ No subscription —
-              pay once
-            </li>
-            <li>
-              ✓ Dashboard,
-              sharing,
-              analytics
-            </li>
-          </ul>
+          <div className="selected-plan-box">
 
-          <button
+            <h3>
+
+              Selected Package
+
+            </h3>
+
+            <div className="selected-plan">
+
+              <span>
+
+                {selectedPlan.name}
+
+              </span>
+
+              <strong>
+
+                ₹{selectedPlan.price}
+
+              </strong>
+
+            </div>
+
+          </div>
+
+          <div className="pricing-alert">
+
+            <h3>
+
+              🎉 Your Free Listing Has Been Used
+
+            </h3>
+
+            <p>
+
+              Upgrade now to continue posting
+              more properties and receive
+              verified buyer enquiries.
+
+            </p>
+
+          </div>
+
+          <div className="features-grid">
+
+            <div className="feature-box">
+
+              📈 More Property Visibility
+
+            </div>
+
+            <div className="feature-box">
+
+              💬 WhatsApp Sharing
+
+            </div>
+
+            <div className="feature-box">
+
+              ⚡ Instant Activation
+
+            </div>
+
+            <div className="feature-box">
+
+              🛡 Secure Dashboard
+
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+
+                    <button
             className="pay-btn"
             onClick={payNow}
+            disabled={loading}
           >
-            Proceed to Pay ₹
-            {amount}
+            {loading
+              ? "Please Wait..."
+              : `Proceed To Pay ₹${selectedPlan.price}`}
           </button>
 
-          <small className="secure-text">
-            🔒 Secured by Cashfree
-          </small>
+          <p className="secure-text">
+            🔒 Secure Payment Powered by Cashfree
+          </p>
 
         </div>
+
         {showPhonePopup && (
-  <div className="phone-popup">
+          <div className="phone-popup">
 
-    <div className="phone-card">
+            <div className="phone-card">
 
-      <h2>📱 Enter Mobile Number</h2>
+              <h2>📱 Enter Mobile Number</h2>
 
-      <input
-        type="text"
-        placeholder="9876543210"
-        value={phoneNumber}
-        onChange={(e) =>
-          setPhoneNumber(e.target.value)
-        }
-      />
+              <p>
+                Cashfree requires your mobile number
+                before continuing the payment.
+              </p>
 
-      <button
-  onClick={() => {
-    if (phoneNumber.length !== 10) {
-      alert("Enter valid mobile number");
-      return;
-    }
+              <input
+                type="text"
+                placeholder="Enter 10 digit mobile number"
+                maxLength={10}
+                value={phoneNumber}
+                onChange={(e) =>
+                  setPhoneNumber(
+                    e.target.value.replace(/\D/g, "")
+                  )
+                }
+              />
 
-    setShowPhonePopup(false);
+              <button
+                className="continue-btn"
+                onClick={() => {
 
-    setTimeout(() => {
-      payNow();
-    }, 100);
-  }}
->
-  Continue To Payment
-</button>
+                  if (phoneNumber.length !== 10) {
+                    alert("Please enter a valid mobile number");
+                    return;
+                  }
 
-    </div>
+                  setShowPhonePopup(false);
 
-  </div>
-)}
+                  setTimeout(() => {
+                    payNow();
+                  }, 150);
+
+                }}
+              >
+                Continue To Payment
+              </button>
+
+            </div>
+
+          </div>
+        )}
+
       </div>
+
     </>
   );
 };
