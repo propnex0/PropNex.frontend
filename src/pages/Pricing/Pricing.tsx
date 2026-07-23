@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 
 declare global {
   interface Window {
-    Razorpay: any;
+    Cashfree: any;
   }
 }
 
@@ -30,90 +30,71 @@ const Pricing = () => {
     useState(299);
 
   const payNow = async () => {
-    try {
-      const userInfo = JSON.parse(
-        localStorage.getItem("userInfo") || "{}"
-      );
+  try {
+    const userInfo = JSON.parse(
+      localStorage.getItem("userInfo") || "{}"
+    );
 
-      const credits =
-        selectedPlan === 15 ? 15 : 30;
+    const credits =
+      selectedPlan === 15 ? 15 : 30;
 
-      const packageName =
-        selectedPlan === 15
-          ? "15 Listings"
-          : "30 Listings";
+    const packageName =
+      selectedPlan === 15
+        ? "15 Listings"
+        : "30 Listings";
 
-          localStorage.setItem(
-  "selectedPlan",
-  JSON.stringify({
-    credits,
-    packageName,
-    amount
-  })
-);
+    localStorage.setItem(
+      "selectedPlan",
+      JSON.stringify({
+        credits,
+        packageName,
+        amount,
+      })
+    );
 
-      const orderRes = await fetch(
-        "https://prop-nex-backend.vercel.app/api/payment/create-order",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type":
-              "application/json",
-            Authorization:
-              `Bearer ${userInfo.token}`,
-          },
-          body: JSON.stringify({
-            amount,
-          }),
-        }
-      );
-
-      const order =
-        await orderRes.json();
-
-      const options = {
-        key: "rzp_test_TFdVvXb2EinFGs",
-
-        amount: order.amount,
-
-        currency: "INR",
-
-        name: "PropNex",
-
-        description: packageName,
-
-        order_id: order.id,
-
-       handler: function () {
-
-  window.location.href =
-  "/payment-success";
-
-},
-
-        prefill: {
-          name:
-            userInfo.name || "",
-          email:
-            userInfo.email || "",
+    const orderRes = await fetch(
+      "https://prop-nex-backend.vercel.app/api/payment/create-order",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
         },
+        body: JSON.stringify({
+          amount,
+          customerId: userInfo._id,
+          customerName: userInfo.name,
+          customerEmail: userInfo.email,
+          customerPhone: userInfo.phone,
+        }),
+      }
+    );
 
-        theme: {
-          color: "#17875d",
-        },
-      };
+    const order = await orderRes.json();
 
-      const razorpay =
-        new window.Razorpay(
-          options
-        );
+if (!order.payment_session_id) {
+  alert("Payment session not found");
+  return;
+}
 
-      razorpay.open();
+const cashfree = window.Cashfree({
+  mode: "production",
+});
 
-    } catch (error) {
-      console.log(error);
-    }
-  };
+await cashfree.checkout({
+  paymentSessionId: order.payment_session_id,
+  redirectTarget: "_self",
+});
+    cashfree.checkout({
+      paymentSessionId: order.payment_session_id,
+      redirectTarget: "_self",
+    });
+
+  } catch (error) {
+    console.log(error);
+    alert("Payment failed.");
+  }
+};
 
   return (
     <>
@@ -226,7 +207,7 @@ const Pricing = () => {
           </button>
 
           <small className="secure-text">
-            🔒 Secured by Razorpay
+            🔒 Secured by Cashfree
           </small>
 
         </div>
