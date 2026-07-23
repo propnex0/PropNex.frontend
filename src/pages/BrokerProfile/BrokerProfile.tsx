@@ -27,59 +27,45 @@ const BrokerProfile = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+  if (id) {
     loadBroker();
-  }, [id]);
+  }
+}, [id]);
 
-  const loadBroker = async () => {
+ const loadBroker = async () => {
+  try {
+    const [brokerRes, listingRes] = await Promise.all([
+      fetch(
+        `https://prop-nex-backend.vercel.app/api/auth/broker/${id}`
+      ),
+      fetch(
+        `https://prop-nex-backend.vercel.app/api/listings/broker/${id}`
+      ),
+    ]);
 
-    try {
-
-      const [brokerRes, listingRes] = await Promise.all([
-
-        fetch(
-          `https://prop-nex-backend.vercel.app/api/auth/broker/${id}`
-        ),
-
-        fetch(
-  `https://prop-nex-backend.vercel.app/api/listings/broker/${id}`
-)
-
-      ]);
-const brokerData = await brokerRes.json();
-
-console.log("BROKER URL =", brokerRes.url);
-console.log("BROKER STATUS =", brokerRes.status);
-console.log("BROKER DATA =", brokerData);
-
-const listingData = await listingRes.json();
-
-console.log("LISTING URL =", listingRes.url);
-console.log("LISTING STATUS =", listingRes.status);
-console.log("LISTINGS =", listingData);
-
-      // const brokerData = await brokerRes.json();
-      console.log("BROKER =", brokerData);
-
-      // const listingData = await listingRes.json();
-      console.log("LISTINGS =", listingData);
-
-      setBroker(brokerData);
-
-      setListings(
-        Array.isArray(listingData)
-          ? listingData
-          : []
-      );
-
-    } catch (err) {
-
-      console.log(err);
-
+    if (!brokerRes.ok) {
+      throw new Error("Broker not found");
     }
 
-    setLoading(false);
+    const brokerData = await brokerRes.json();
+    const listingData = await listingRes.json();
 
-  };
+    setBroker(brokerData);
+
+    setListings(
+      Array.isArray(listingData)
+        ? listingData
+        : []
+    );
+
+  } catch (err) {
+    console.log(err);
+    setBroker(null);
+    setListings([]);
+  } finally {
+    setLoading(false);
+  }
+};
 
   if (loading) {
     return (
