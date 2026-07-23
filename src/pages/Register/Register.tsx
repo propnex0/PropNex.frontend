@@ -14,6 +14,7 @@ const [otp, setOtp] = useState(["", "", "", "", "", ""]);
 const [timer, setTimer] = useState(30);
 
 const [canResend, setCanResend] = useState(false);
+const [loading, setLoading] = useState(false);
 
 const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   
@@ -38,15 +39,32 @@ const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
 }, [timer, showOtpBox]);
 const handleOtpChange = (value: string, index: number) => {
+
   if (!/^[0-9]?$/.test(value)) return;
 
   const newOtp = [...otp];
+
   newOtp[index] = value;
+
   setOtp(newOtp);
 
   if (value && index < 5) {
     inputRefs.current[index + 1]?.focus();
   }
+
+  // Last box entered
+  if (value && index === 5) {
+
+    const finalOtp = [...newOtp];
+
+    setTimeout(() => {
+
+      verifyOtp(finalOtp.join(""));
+
+    },150);
+
+  }
+
 };
 
 const handleKeyDown = (
@@ -78,6 +96,10 @@ const handlePaste = (
   });
 
   inputRefs.current[5]?.focus();
+
+setTimeout(() => {
+  verifyOtp(values.join(""));
+}, 150);
 };
 
 const resendOtp = async () => {
@@ -106,15 +128,20 @@ const resendOtp = async () => {
     alert("Failed to resend OTP");
   }
 };
-const verifyOtp = async () => {
+const verifyOtp = async (otpValue?: string) => {
+
+  setLoading(true);
+
+  const enteredOtp = otpValue || otp.join("");
  
 
-  const enteredOtp = otp.join("");
+
 
   if (enteredOtp.length !== 6) {
-    alert("Please enter 6 digit OTP");
-    return;
-  }
+  setLoading(false);
+  alert("Please enter 6 digit OTP");
+  return;
+}
 
   try {
 
@@ -134,27 +161,48 @@ const verifyOtp = async () => {
 
     const data = await response.json();
 
-    if (response.ok) {
+   if (response.ok) {
 
-      setMessage("✅ Email verified successfully.");
+  const userResponse = await fetch(
+  "https://prop-nex-backend.vercel.app/api/auth/profile",
+  {
+    headers: {
+      Authorization: `Bearer ${data.token}`,
+    },
+  }
+);
+
+const userData = await userResponse.json();
+
+localStorage.setItem(
+  "userInfo",
+  JSON.stringify({
+    ...userData,
+    token: data.token,
+  })
+);
+
+setMessage("✅ Email verified successfully.");
 
 setTimeout(() => {
-  navigate("/login");
-}, 1500);
+  window.location.href = "/";
+}, 500);
 
-     
+} else {
 
-    } else {
+  alert(data.message);
 
-      alert(data.message);
+}
 
-    }
+   } catch (error) {
 
-  } catch (error) {
+  alert("Verification Failed");
 
-    alert("Verification Failed");
+} finally {
 
-  }
+  setLoading(false);
+
+}
 
 };
   const submitHandler = async (e: React.FormEvent) => {
@@ -194,9 +242,11 @@ if (response.ok) {
 
   setPassword("");
 
-}else {
+} else {
+
   alert(data.message);
-}
+
+} 
 
     
     } catch (error) {
@@ -327,41 +377,32 @@ index
 
 </div>
 
-<button
 
-type="button"
 
-className="register-btn"
+{canResend ? (
+  <p
+    className="resend"
+    onClick={resendOtp}
+  >
+    Resend OTP
+  </p>
+) : (
+  <p className="timer">
+    Resend OTP in {timer}s
+  </p>
+)}
 
-onClick={verifyOtp}
+{loading && (
+  <div className="loading-box">
+    <div className="spinner"></div>
+    <span>Verifying your account...</span>
+  </div>
+)}
 
->
 
-Verify OTP
 
-</button>
 
-{
-canResend ? (
 
-<p
-  className="resend"
-  onClick={resendOtp}
->
-  Resend OTP
-</p>
-
-):(
-
-<p className="timer">
-
-Resend OTP in {timer}s
-
-</p>
-
-)
-
-}
 
 </div>
 
