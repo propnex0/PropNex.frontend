@@ -71,6 +71,7 @@ const Pricing = () => {
     );
 
     const order = await orderRes.json();
+    console.log("Cashfree Order =", order);
 
 if (!order.payment_session_id) {
   alert("Payment session not found");
@@ -81,10 +82,7 @@ const cashfree = window.Cashfree({
   mode: "production",
 });
 
-await cashfree.checkout({
-  paymentSessionId: order.payment_session_id,
-  redirectTarget: "_self",
-});
+
     cashfree.checkout({
       paymentSessionId: order.payment_session_id,
       redirectTarget: "_self",
