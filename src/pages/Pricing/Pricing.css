@@ -1,7 +1,7 @@
 .pricing-page {
   margin-left: 260px;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
   min-height: calc(100vh - 80px);
   padding: 40px 20px;
   background: #f3f4f6;
@@ -259,7 +259,7 @@
 
   .pricing-page{
     margin-left:0;
-    margin-top:70px;
+    margin-top:20px;
     padding:20px;
   }
 
@@ -278,6 +278,13 @@
 }
 
 @media(max-width:600px){
+
+    .pricing-page{
+    margin-left:0;
+    margin-top:20px;
+    margin-bottom: 20px;
+    padding:20px;
+  }
 
   .pricing-container{
     padding:18px;
