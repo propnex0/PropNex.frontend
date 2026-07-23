@@ -1514,8 +1514,8 @@ padding:150px 20px;
 
 
 .site-logo{
-  width: auto;
-  height: 52px;
+  width: 150;
+  height: auto;
   object-fit: contain;
   display: block;
   cursor: pointer;
@@ -1535,7 +1535,7 @@ padding:150px 20px;
 @media (max-width:992px){
 
   .site-logo{
-    height: 46px;
+    height: 56px;
   }
 
 }
@@ -1543,7 +1543,7 @@ padding:150px 20px;
 @media (max-width:768px){
 
   .site-logo{
-    height: 40px;
+    height: 50px;
   }
 
 }
@@ -1551,7 +1551,7 @@ padding:150px 20px;
 @media (max-width:480px){
 
   .site-logo{
-    height: 34px;
+    height: 44px;
   }
 
 }
