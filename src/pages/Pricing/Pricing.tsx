@@ -111,7 +111,7 @@ const Pricing = () => {
             <img
               src="/logo.png"
               alt="PropNex"
-              className="site-logo"
+              className="site1-logo"
             />
 
             <h1>
