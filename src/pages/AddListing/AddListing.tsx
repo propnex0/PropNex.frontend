@@ -1217,7 +1217,7 @@ const AddListing = () => {
 
   </div>
 
-  <div className="form-group">
+  <div className="upload-box">
 
     <label>Agent Photo</label>
 
