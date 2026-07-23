@@ -1538,7 +1538,7 @@ padding:150px 20px;
 @media (max-width:992px){
 
   .site-logo{
-    height: 46px;
+    width: auto;
   }
 
 }
@@ -1546,7 +1546,7 @@ padding:150px 20px;
 @media (max-width:768px){
 
   .site-logo{
-    height: 40px;
+    width: auto;
   }
 
 }
@@ -1554,7 +1554,7 @@ padding:150px 20px;
 @media (max-width:480px){
 
   .site-logo{
-    height: 34px;
+    width: auto;
   }
 
 }
