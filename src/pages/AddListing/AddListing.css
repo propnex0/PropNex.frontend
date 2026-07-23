@@ -1173,3 +1173,17 @@ gap:35px;
 }
 
 }
+
+.add-listing{
+  margin-left:270px;
+  padding:20px;
+  min-height:100vh;
+}
+
+@media(max-width:768px){
+  .add-listing{
+    margin-left:0;
+    padding:15px;
+    padding-bottom:90px;
+  }
+}

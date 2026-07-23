@@ -778,7 +778,9 @@ const AddListing = () => {
 
       <input
         type="text"
-        placeholder="+91 9876543210"
+        placeholder="+91 "
+        maxLength={10}
+  pattern="[0-9]{10}"
         value={phone}
         onChange={(e) =>
           setPhone(e.target.value)
@@ -793,7 +795,9 @@ const AddListing = () => {
 
       <input
         type="text"
-        placeholder="+91 9876543210"
+        placeholder="+91 "
+        maxLength={10}
+  pattern="[0-9]{10}"
         value={whatsapp}
         onChange={(e) =>
           setWhatsapp(e.target.value)
