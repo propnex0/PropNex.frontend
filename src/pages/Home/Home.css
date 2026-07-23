@@ -458,7 +458,7 @@ font-size:17px;
 }
 
 .site-logo{
-  height:48px;
+  width: auto;
 }
 .logout-btn{
   height:42px;
