@@ -12,7 +12,7 @@ import Agency from "../pages/Agency/Agency";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import ProtectedRoute from "../components/ProtectedRoute";
 import EditListing from "../pages/EditListing/EditListing";
 
