@@ -808,7 +808,7 @@ const AddListing = () => {
 
   </div>
 
-</div></form>
+</div>
   
   {/* ==========================
     PROPERTY DETAILS
@@ -1328,20 +1328,12 @@ const AddListing = () => {
   className="submit-btn"
   disabled={loading}
 >
-
-  {
-
-    loading
-
-      ? "Uploading Listing..."
-
-      : "🏠 Create Listing"
-
-  }
-
+  {loading
+    ? "Uploading Listing..."
+    : "🏠 Create Listing"}
 </button>
 
-
+</form>
 
 </div>
 
