@@ -244,18 +244,9 @@ const changeImageOrder = (
       AGENT PHOTO
   ========================== */
 
-  const agentPhotoHandler = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
 
-    if (!e.target.files) return;
 
-    setAgentPhoto(e.target.files[0]);
-    setAgentPhotoPreview(
-  URL.createObjectURL(e.target.files[0])
-);
-
-  };
+ 
 
   /* ==========================
       VALIDATION
