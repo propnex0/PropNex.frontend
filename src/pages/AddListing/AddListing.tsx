@@ -82,6 +82,8 @@ const AddListing = () => {
 
   const [agentPhoto, setAgentPhoto] =
     useState<File | null>(null);
+    const [agentPhotoPreview, setAgentPhotoPreview] =
+  useState("");
 
   /* ==========================
       PREVIEW
@@ -126,6 +128,13 @@ const AddListing = () => {
       setWhatsapp(
         userInfo.whatsapp || ""
       );
+      if (userInfo.photo) {
+  setAgentPhotoPreview(
+    userInfo.photo.startsWith("http")
+      ? userInfo.photo
+      : `https://prop-nex-backend.vercel.app${userInfo.photo}`
+  );
+}
 
     }
 
@@ -242,6 +251,9 @@ const changeImageOrder = (
     if (!e.target.files) return;
 
     setAgentPhoto(e.target.files[0]);
+    setAgentPhotoPreview(
+  URL.createObjectURL(e.target.files[0])
+);
 
   };
 
@@ -1252,15 +1264,23 @@ const changeImageOrder = (
 
   <div className="upload-box">
 
-    <label>Agent Photo</label>
+  <label>Agent Photo</label>
 
-    <input
-      type="file"
-      accept="image/*"
-      onChange={agentPhotoHandler}
+  {agentPhotoPreview && (
+    <img
+      src={agentPhotoPreview}
+      alt="Agent"
+      className="agent-photo-preview"
     />
+  )}
 
-  </div>
+  <input
+    type="file"
+    accept="image/*"
+    onChange={agentPhotoHandler}
+  />
+
+</div>
 
 </div>{/* ==========================
     PROPERTY MEDIA
