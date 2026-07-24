@@ -2,6 +2,15 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./CollectionDetails.css";
 
+const getMediaUrl = (url: string) => {
+
+  if (!url) return "/no-image.png";
+
+  return url.startsWith("http")
+    ? url
+    : `https://prop-nex-backend.vercel.app${url}`;
+
+};
 const CollectionDetails = () => {
 
   const { id } = useParams();
@@ -108,19 +117,13 @@ const CollectionDetails = () => {
           >
 
 
-            <img
+           <img
 
-            src={
-              item.images?.length
-              ?
-              `https://prop-nex-backend.vercel.app${item.images[0]}`
-              :
-              "/no-image.png"
-            }
+  src={getMediaUrl(item.images?.[0])}
 
-            alt=""
+  alt={item.title}
 
-            />
+/>
 
 
 
