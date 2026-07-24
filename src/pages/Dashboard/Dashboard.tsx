@@ -5,6 +5,16 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
+
+const getMediaUrl = (url: string) => {
+
+  if (!url) return "/no-image.png";
+
+  return url.startsWith("http")
+    ? url
+    : `https://prop-nex-backend.vercel.app${url}`;
+
+};
 const Dashboard = () => {
 
   const userInfo = JSON.parse(
@@ -906,10 +916,10 @@ className={`status-badge ${lead.status.toLowerCase()}`}
 
   <img
     src={
-      topListing.images?.length
-        ? `https://prop-nex-backend.vercel.app${topListing.images[0]}`
-        : "/no-image.png"
-    }
+  getMediaUrl(
+    topListing.images?.[0]
+  )
+}
     alt=""
   />
 
@@ -962,10 +972,10 @@ className={`status-badge ${lead.status.toLowerCase()}`}
               <img
                 className="listing-image"
                 src={
-                  item.images?.length
-                    ? `https://prop-nex-backend.vercel.app${item.images[0]}`
-                    : "/no-image.png"
-                }
+  getMediaUrl(
+    item.images?.[0]
+  )
+}
                 alt=""
               />
 
