@@ -15,8 +15,8 @@ const [bio,setBio]=useState("");
 const [whatsapp,setWhatsapp]=useState("");
 const [city,setCity]=useState("");
 const [reraNumber,setReraNumber]=useState("");
-const [experience,setExperience]=useState("");
-const [dealsClosed,setDealsClosed]=useState("");
+const [experience, setExperience] = useState<string>("");
+const [dealsClosed, setDealsClosed] = useState<string>("");
 
 const [facebook,setFacebook]=useState("");
 const [instagram,setInstagram]=useState("");
@@ -434,7 +434,8 @@ onChange={(e)=>setReraNumber(e.target.value)}
 type="number"
 placeholder="Experience"
 value={experience}
-onChange={(e)=>setExperience(e.target.value)}
+onChange={(e) => setExperience(e.target.value)}
+min="0"
 />
 
 
@@ -443,7 +444,8 @@ onChange={(e)=>setExperience(e.target.value)}
 type="number"
 placeholder="Deals Closed"
 value={dealsClosed}
-onChange={(e)=>setDealsClosed(e.target.value)}
+onChange={(e) => setDealsClosed(e.target.value)}
+min="0"
 />
 
 
