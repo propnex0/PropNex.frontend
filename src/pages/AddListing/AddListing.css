@@ -469,6 +469,15 @@ font-size:14px;
 cursor:pointer;
 
 }
+.agent-photo-preview{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid #166534;
+margin:15px 0;
+display:block;
+}
 .preview-card img{
 
     width:100%;
