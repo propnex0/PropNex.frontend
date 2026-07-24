@@ -470,13 +470,17 @@ cursor:pointer;
 
 }
 .agent-photo-preview{
-width:120px;
-height:120px;
-border-radius:50%;
-object-fit:cover;
-border:3px solid #166534;
-margin:15px 0;
-display:block;
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #166534;
+  display:block;
+  margin:20px auto;
+}
+
+.upload-box{
+  text-align:center;
 }
 .preview-card img{
 

@@ -1264,7 +1264,7 @@ const changeImageOrder = (
 
   <div className="upload-box">
 
-  <label>Agent Photo</label>
+    <label>Agent Photo</label>
 
   {agentPhotoPreview && (
     <img
@@ -1273,12 +1273,6 @@ const changeImageOrder = (
       className="agent-photo-preview"
     />
   )}
-
-  <input
-    type="file"
-    accept="image/*"
-    onChange={agentPhotoHandler}
-  />
 
 </div>
 
