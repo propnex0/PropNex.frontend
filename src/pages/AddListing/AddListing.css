@@ -402,7 +402,73 @@ padding:13px 15px;
     box-shadow:0 8px 22px rgba(0,0,0,.08);
 
 }
+.preview-card{
 
+position:relative;
+
+}
+
+.cover-badge{
+
+position:absolute;
+
+top:10px;
+
+left:10px;
+
+background:#16a34a;
+
+color:#fff;
+
+padding:6px 12px;
+
+border-radius:30px;
+
+font-size:12px;
+
+font-weight:600;
+
+z-index:5;
+
+}
+
+.order-box{
+
+margin-top:10px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:6px;
+
+}
+
+.order-box label{
+
+font-size:13px;
+
+font-weight:600;
+
+color:#444;
+
+}
+
+.order-box select{
+
+width:100%;
+
+padding:8px 12px;
+
+border-radius:8px;
+
+border:1px solid #ddd;
+
+font-size:14px;
+
+cursor:pointer;
+
+}
 .preview-card img{
 
     width:100%;

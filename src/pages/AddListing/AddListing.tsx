@@ -90,6 +90,9 @@ const AddListing = () => {
   const [imagePreview, setImagePreview] =
     useState<string[]>([]);
 
+    const [imageOrder, setImageOrder] =
+  useState<number[]>([]);
+
   const [videoPreview, setVideoPreview] =
     useState("");
 
@@ -144,6 +147,10 @@ const AddListing = () => {
 
     setImagePreview(urls);
 
+    setImageOrder(
+  urls.map((_, index) => index + 1)
+);
+
     return () => {
       urls.forEach((url) =>
         URL.revokeObjectURL(url)
@@ -176,7 +183,30 @@ const AddListing = () => {
   /* ==========================
       IMAGE CHANGE
   ========================== */
+const changeImageOrder = (
+  index: number,
+  value: number
+) => {
 
+  const newOrder = [...imageOrder];
+
+  const oldIndex =
+    newOrder.findIndex(
+      (item) => item === value
+    );
+
+  if (oldIndex !== -1) {
+
+    newOrder[oldIndex] =
+      newOrder[index];
+
+  }
+
+  newOrder[index] = value;
+
+  setImageOrder(newOrder);
+
+};
   const imageChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -361,16 +391,18 @@ const AddListing = () => {
 
       if (images) {
 
-        Array.from(images).forEach((image) => {
+  const sortedImages = Array.from(images)
+    .map((image, index) => ({
+      image,
+      order: imageOrder[index],
+    }))
+    .sort((a, b) => a.order - b.order);
 
-          formData.append(
-            "images",
-            image
-          );
+  sortedImages.forEach((item) => {
+    formData.append("images", item.image);
+  });
 
-        });
-
-      }
+}
 
       /* -------------------------
           VIDEO UPLOAD
@@ -552,6 +584,7 @@ const AddListing = () => {
       setAgentPhoto(null);
 
       setImagePreview([]);
+      setImageOrder([]);
       setVideoPreview("");
 
     } catch (error: any) {
@@ -1267,16 +1300,63 @@ const AddListing = () => {
       {imagePreview.map((image, index) => (
 
         <div
-          className="preview-card"
-          key={index}
-        >
+  className="preview-card"
+  key={index}
+>
 
-          <img
-            src={image}
-            alt={`Preview ${index + 1}`}
-          />
+  {
+    imageOrder[index] === 1 && (
+      <div className="cover-badge">
+        ⭐ Cover Image
+      </div>
+    )
+  }
 
-        </div>
+  <img
+    src={image}
+    alt={`Preview ${index + 1}`}
+  />
+
+  <div className="order-box">
+
+    <label>
+      Display Order
+    </label>
+
+    <select
+      value={imageOrder[index]}
+      onChange={(e)=>
+        changeImageOrder(
+          index,
+          Number(e.target.value)
+        )
+      }
+    >
+
+      {
+        Array.from(
+          {
+            length:imagePreview.length
+          }
+        ).map((_,i)=>(
+
+          <option
+            key={i}
+            value={i+1}
+          >
+
+            {i+1}
+
+          </option>
+
+        ))
+      }
+
+    </select>
+
+  </div>
+
+</div>
 
       ))}
 
