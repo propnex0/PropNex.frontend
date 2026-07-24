@@ -15,6 +15,7 @@ const EditListing = () => {
   const [description, setDescription] =
     useState("");
     const [images, setImages] = useState<FileList | null>(null);
+    const [agentPhoto, setAgentPhoto] = useState<File | null>(null);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -64,6 +65,9 @@ const EditListing = () => {
         formData.append("images", images[i]);
       }
     }
+    if (agentPhoto) {
+  formData.append("agentPhoto", agentPhoto);
+}
 const userInfo = JSON.parse(
   localStorage.getItem("userInfo") || "{}"
 );
@@ -200,6 +204,17 @@ Save Draft
     }
   />
   
+  <div className="upload-box">
+  <label>👤 Broker Photo</label>
+
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) =>
+      setAgentPhoto(e.target.files?.[0] || null)
+    }
+  />
+</div>
 </div>
 
         <button
@@ -208,6 +223,7 @@ Save Draft
         >
           Update Listing
         </button>
+
       </form>
     </div>
   );
