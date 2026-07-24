@@ -530,7 +530,7 @@ navigate(
         )
       }
     >
-      <div className="share-circle">🟢</div>
+      <div className="share-circle">💬</div>
       <span>WhatsApp</span>
     </div>
 
