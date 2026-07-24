@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./Register.css";
 
 const Register = () => {
@@ -21,6 +22,7 @@ const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
 
@@ -290,16 +292,38 @@ if (response.ok) {
           </div>
 
           <div className="form-group">
-            <label>PASSWORD</label>
 
-            <input
-              type="password"
-              placeholder="********"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+  <label>PASSWORD</label>
+
+  <div className="password-box">
+
+    <input
+      type={showPassword ? "text" : "password"}
+      placeholder="********"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+    />
+
+    {showPassword ? (
+
+      <FiEyeOff
+        className="eye-icon"
+        onClick={() => setShowPassword(false)}
+      />
+
+    ) : (
+
+      <FiEye
+        className="eye-icon"
+        onClick={() => setShowPassword(true)}
+      />
+
+    )}
+
+  </div>
+
+</div>
 
           <button
             className="register-btn"

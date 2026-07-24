@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiEye } from "react-icons/fi";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,14 +88,24 @@ const Login = () => {
             <div className="password-box">
 
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
 
-              <FiEye className="eye-icon" />
+              {showPassword ? (
+  <FiEyeOff
+    className="eye-icon"
+    onClick={() => setShowPassword(false)}
+  />
+) : (
+  <FiEye
+    className="eye-icon"
+    onClick={() => setShowPassword(true)}
+  />
+)}
 
             </div>
 

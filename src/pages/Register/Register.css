@@ -318,3 +318,25 @@ body{
 }
 
 }
+
+.password-box{
+  position: relative;
+}
+
+.password-box input{
+  width: 100%;
+}
+
+.eye-icon{
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 20px;
+}
+
+.eye-icon:hover{
+  color: #166534;
+}
