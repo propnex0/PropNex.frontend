@@ -311,7 +311,7 @@ user.name
 ?
 user.name.charAt(0)
 :
-"K"
+""
 
 
 }
