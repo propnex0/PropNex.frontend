@@ -186,7 +186,12 @@ Save Draft
         </div>
 
 
-       
+         <button
+          type="submit"
+          className="submit-btn"
+        >
+          Update Listing
+        </button>
       </form>
     </div>
   );
