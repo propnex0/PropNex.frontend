@@ -130,11 +130,12 @@ element={<AddLead />}
 
     </Routes>
      {
-location.pathname !== "/" &&
-location.pathname !== "/login" &&
-location.pathname !== "/register" && (
-  <BottomNav />
-)
+  location.pathname !== "/" &&
+  location.pathname !== "/login" &&
+  location.pathname !== "/register" &&
+  !location.pathname.startsWith("/property/") && (
+    <BottomNav />
+  )
 }
 </>
   );
