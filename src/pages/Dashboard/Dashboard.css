@@ -966,24 +966,7 @@ opacity:0.85;
     border-radius:12px;
 }
 
-/* MOBILE */
 
-@media(max-width:768px){
-
-  .top-listing-content{
-    align-items:flex-start;
-  }
-
-  .top-listing-info{
-    width:100%;
-  }
-
-  .top-listing-link .view-btn{
-    width:100%;
-    margin-top:10px;
-  }
-
-}
 /* ==========================
    MONTHLY ANALYTICS
 ========================== */
@@ -1384,71 +1367,74 @@ opacity:0.85;
 
 }
 
-/* ===============================
-   TOP LISTING MOBILE FINAL
-================================*/
-
-@media(max-width:768px){
+/* ==========================================
+   TOP LISTING FINAL
+========================================== */
 
 .top-listing-content{
-
-display:grid;
-grid-template-columns:90px 1fr 90px;
-gap:14px;
-align-items:center;
-
-}
-
-.top-listing-content img{
-
-width:90px;
-height:90px;
-border-radius:14px;
-object-fit:cover;
-
+    display:grid;
+    grid-template-columns:180px 1fr 140px;
+    gap:20px;
+    align-items:center;
 }
 
 .top-listing-info{
-
-min-width:0;
-
-}
-
-.top-listing-info h3{
-
-font-size:16px;
-line-height:1.35;
-margin-bottom:6px;
-
-display:-webkit-box;
--webkit-line-clamp:2;
--webkit-box-orient:vertical;
-overflow:hidden;
-
-}
-
-.top-listing-info p{
-
-font-size:13px;
-margin:3px 0;
-
+    min-width:0;
 }
 
 .top-listing-link{
-
-display:flex;
-justify-content:flex-end;
-align-items:center;
-
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
 }
 
 .top-listing-link .view-btn{
-
-width:82px;
-height:40px;
-font-size:13px;
-border-radius:10px;
-
+    width:130px;
+    height:46px;
+    border-radius:12px;
+    white-space:nowrap;
 }
+
+@media(max-width:768px){
+
+    .top-listing-content{
+        grid-template-columns:90px 1fr 90px;
+        gap:12px;
+        align-items:center;
+    }
+
+    .top-listing-content img{
+        width:90px;
+        height:90px;
+        border-radius:14px;
+    }
+
+    .top-listing-info h3{
+        font-size:16px;
+        line-height:1.35;
+        margin-bottom:6px;
+
+        display:-webkit-box;
+        -webkit-line-clamp:2;
+        -webkit-box-orient:vertical;
+        overflow:hidden;
+    }
+
+    .top-listing-info p{
+        font-size:13px;
+        margin:3px 0;
+    }
+
+    .top-listing-link{
+        justify-content:flex-end;
+        align-items:center;
+    }
+
+    .top-listing-link .view-btn{
+        width:82px;
+        height:40px;
+        font-size:12px;
+        padding:0;
+    }
 
 }
