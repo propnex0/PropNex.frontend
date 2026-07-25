@@ -440,9 +440,9 @@
 
     margin:0;
 
-    font-size:20px;
+    font-size:12px;
 
-    font-weight:800;
+    font-weight:600;
 
     color:#111827;
 
@@ -453,7 +453,7 @@
 
 .property-info h3:nth-child(2){
 
-    font-size:18px;
+    font-size:12px;
 
     color:#047857;
 
@@ -465,7 +465,7 @@
 
     margin:0;
 
-    font-size:15px;
+    font-size:12px;
 
     font-weight:600;
 
