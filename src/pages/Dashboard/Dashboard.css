@@ -1379,10 +1379,21 @@ opacity:0.85;
 }
 
 .top-listing-action .view-btn{
-    width:140px;
-    height:48px;
-    font-size:15px;
-    border-radius:12px;
+    width:110px;
+    height:42px;
+    padding:0 14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    white-space:nowrap;
+    overflow:hidden;
+
+    font-size:13px;
+    font-weight:600;
+
+    border-radius:10px;
 }
 
 
@@ -1391,11 +1402,10 @@ opacity:0.85;
 @media(max-width:768px){
 
 .top-listing-content{
-
-    display:flex;
+    display:grid;
+    grid-template-columns:80px 1fr 110px;
+    gap:14px;
     align-items:center;
-    gap:12px;
-
 }
 
 .top-listing-content img{
@@ -1406,10 +1416,14 @@ opacity:0.85;
 }
 
 .top-listing-info h3{
-
-    font-size:17px;
+    font-size:16px;
     line-height:1.35;
+    margin-bottom:6px;
 
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
 }
 
 .top-listing-info p{
