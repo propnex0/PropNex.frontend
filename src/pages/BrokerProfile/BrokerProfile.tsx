@@ -7,7 +7,15 @@ import {
   FaMapMarkerAlt,
   FaCheckCircle,
 } from "react-icons/fa";
-
+import {
+  FaPhoneAlt,
+  FaWhatsapp,
+  FaMapMarkerAlt,
+  FaCheckCircle,
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
 import "./BrokerProfile.css";
 
 const getMediaUrl = (url: string) => {
@@ -349,7 +357,94 @@ const BrokerProfile = () => {
         </div>
 
       </section>
+{/* ==========================
+    SOCIAL LINKS
+========================== */}
 
+{(broker.facebook ||
+  broker.instagram ||
+  broker.linkedin) && (
+
+<section className="bp-social">
+
+  <h2>Social Links</h2>
+
+  <div className="bp-social-grid">
+
+    {broker.facebook && (
+
+      <a
+        href={broker.facebook}
+        target="_blank"
+        rel="noreferrer"
+        className="bp-social-card facebook"
+      >
+
+        <FaFacebookF />
+
+        <div>
+
+          <h4>Facebook</h4>
+
+          <p>Follow on Facebook</p>
+
+        </div>
+
+      </a>
+
+    )}
+
+    {broker.instagram && (
+
+      <a
+        href={broker.instagram}
+        target="_blank"
+        rel="noreferrer"
+        className="bp-social-card instagram"
+      >
+
+        <FaInstagram />
+
+        <div>
+
+          <h4>Instagram</h4>
+
+          <p>Follow on Instagram</p>
+
+        </div>
+
+      </a>
+
+    )}
+
+    {broker.linkedin && (
+
+      <a
+        href={broker.linkedin}
+        target="_blank"
+        rel="noreferrer"
+        className="bp-social-card linkedin"
+      >
+
+        <FaLinkedinIn />
+
+        <div>
+
+          <h4>LinkedIn</h4>
+
+          <p>Connect on LinkedIn</p>
+
+        </div>
+
+      </a>
+
+    )}
+
+  </div>
+
+</section>
+
+)}
       {/* ==========================
           FOOTER
       ========================== */}
