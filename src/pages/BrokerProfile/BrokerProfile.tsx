@@ -6,16 +6,11 @@ import {
   FaWhatsapp,
   FaMapMarkerAlt,
   FaCheckCircle,
-} from "react-icons/fa";
-import {
-  FaPhoneAlt,
-  FaWhatsapp,
-  FaMapMarkerAlt,
-  FaCheckCircle,
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
+
 import "./BrokerProfile.css";
 
 const getMediaUrl = (url: string) => {
