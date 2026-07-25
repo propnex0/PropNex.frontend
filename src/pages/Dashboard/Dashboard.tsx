@@ -909,37 +909,33 @@ className={`status-badge ${lead.status.toLowerCase()}`}
 
       <div className="top-listing-content">
 
-        <img
-          src={getMediaUrl(topListing.images?.[0])}
-          alt={topListing.title}
-        />
-
-        <div className="top-listing-info">
-
-          <h3>{topListing.title}</h3>
-
-          <p>📍 {topListing.city}</p>
-
-          <p>👁 {topListing.views || 0} Views</p>
-
-          <p>₹ {topListing.price}</p>
-
-        </div>
-
-        <div className="top-listing-action">
-
-          <Link
-            to={`/property/${topListing._id}`}
-            state={{ fromApp: true }}
-          >
-            <button className="view-btn">
-              View Property
-            </button>
-          </Link>
-
-        </div>
-
+  <div className="top-listing-image">
+      <img src={getMediaUrl(topListing.images?.[0])} alt="" />
+      <div className="image-views">
+          👁 {topListing.views || 0}
       </div>
+  </div>
+
+  <div className="top-listing-info">
+      <h3>{topListing.title}</h3>
+
+      <p>
+        ₹ {topListing.price} • {topListing.city}
+      </p>
+  </div>
+
+  <div className="top-listing-action">
+      <Link
+        to={`/property/${topListing._id}`}
+        state={{ fromApp: true }}
+      >
+          <button className="view-btn">
+              View
+          </button>
+      </Link>
+  </div>
+
+</div>
 
     ) : (
 
