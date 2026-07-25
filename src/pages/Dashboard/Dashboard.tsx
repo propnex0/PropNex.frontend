@@ -395,12 +395,7 @@ useEffect(() => {
           </p>
         </div>
 
-        <Link
-          to="/edit-profile"
-          className="edit-profile-btn"
-        >
-          Edit Profile
-        </Link>
+       
 
     <div className="listing-warning">
 
