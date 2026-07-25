@@ -249,9 +249,7 @@ console.log("FIRST IMAGES =", data[0]?.images);
         📍 {item.location}
       </span>
 
-      <span>
-        • {item.bhk || "-"} BHK
-      </span>
+      
 
       <span>
         • {item.transactionType || "For Sale"}
