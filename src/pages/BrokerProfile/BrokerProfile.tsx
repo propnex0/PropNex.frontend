@@ -124,7 +124,7 @@ const BrokerProfile = () => {
             <FaMapMarkerAlt />
 
             <span>
-              {broker.city || "Jaipur"}
+              {broker.city || ""}
             </span>
 
           </div>
@@ -239,7 +239,7 @@ const BrokerProfile = () => {
         <div className="bp-card-body">
 
           <h2 className="bp-card-price">
-            ₹ {Number(item.price || 0).toLocaleString("en-IN")}
+            ₹ {Number(String(item.price).replace(/,/g, "")).toLocaleString("en-IN")}
           </h2>
 
           <h3 className="bp-card-title">
