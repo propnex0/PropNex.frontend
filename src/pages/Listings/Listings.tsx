@@ -214,69 +214,84 @@ console.log("FIRST IMAGES =", data[0]?.images);
   style={{ cursor: "pointer" }}
 >
     <div className="listing-top">
-<div
-  className="listing-img"
-  style={{
-    display: "flex",
-    gap: "8px",
-    flexWrap: "wrap",
-  }}
->
-  {item.images?.length > 0 ? (
-    item.images.map(
-      (img: string, index: number) => (
-        <img
-          key={index}
-          onError={() => console.log("Image Error =", img)}
-          src={getMediaUrl(img)}
-          alt={item.title}
-          style={{
-            width: "80px",
-            height: "80px",
-            objectFit: "cover",
-            borderRadius: "10px",
-          }}
-        />
-      )
-    )
-  ) : (
-    "🏠"
-  )}
-</div>
 
-      <div className="listing-info">
-      
-        <h3>{item.title}</h3>
+  <div className="listing-left">
 
-        <p>
-          ₹ {item.price}
-        </p>
-
-        <span className="available">
-          {item.location}
-        </span>
-      </div>
-
-      <span
-  className={
-    item.status === "Live"
-      ? "live-badge"
-      : "draft-badge"
+    <img
+  className="listing-thumb"
+  src={
+    item.images?.length
+      ? getMediaUrl(item.images[0])
+      : "https://placehold.co/300x300?text=No+Image"
   }
->
-  {item.status}
-</span>
+  alt={item.title}
+  onError={(e) => {
+    e.currentTarget.src =
+      "https://placehold.co/300x300?text=No+Image";
+  }}
+/>
+
+  </div>
+
+  <div className="listing-center">
+
+    <h2 className="listing-price">
+      ₹ {item.price}
+    </h2>
+
+    <h3 className="listing-title">
+      {item.title}
+    </h3>
+
+    <div className="listing-meta">
+
+      <span>
+        📍 {item.location}
+      </span>
+
+      <span>
+        • {item.bhk || "-"} BHK
+      </span>
+
+      <span>
+        • {item.transactionType || "For Sale"}
+      </span>
+
     </div>
 
+  </div>
+
+  <div className="listing-right">
+
+    <span
+      className={
+        item.status === "Live"
+          ? "live-badge"
+          : "draft-badge"
+      }
+    >
+      {item.status}
+    </span>
+
+    <div className="listing-views">
+      👁 {item.views || 0}
+    </div>
+
+  </div>
+
+</div>
+
     <div className="listing-actions">
-<button
-  onClick={(e) => {
-    e.stopPropagation();
 
-    const link =
-      `${window.location.origin}/property/${item._id}`;
+  <button
+    className="action-btn share-btn"
+    onClick={(e) => {
+      e.stopPropagation();
 
-    const message = `🏠 ${item.title}
+      const link =
+        `${window.location.origin}/property/${item._id}`;
+
+      const message = `🏠 ${item.title}
 
 💰 ₹${item.price}
 
@@ -285,49 +300,58 @@ console.log("FIRST IMAGES =", data[0]?.images);
 View Property:
 ${link}`;
 
-    if (navigator.share) {
-      navigator.share({
-        title: item.title,
-        text: message,
-        url: link,
-      });
-    } else {
-      setShareData({
-        open: true,
-        message,
-      });
-    }
-  }}
->
-  Share
-</button>
-<button
-  onClick={(e) => {
-    e.stopPropagation();
+      if (navigator.share) {
+        navigator.share({
+          title: item.title,
+          text: message,
+          url: link,
+        });
+      } else {
+        setShareData({
+          open: true,
+          message,
+        });
+      }
+    }}
+  >
+    🔗 Share
+  </button>
 
-    navigate(
-      `/edit-listing/${item._id}`
-    );
-  }}
->
-  Edit
-</button>    
-<button
-  onClick={(e) => {
-    e.stopPropagation();
-    setDeleteId(item._id);
-  }}
->
-Delete
-</button>
+  <button
+    className="action-btn"
+    onClick={(e) => {
+      e.stopPropagation();
+      navigate(`/edit-listing/${item._id}`);
+    }}
+  >
+    ✏ Edit
+  </button>
 
-<button
-  className="views-btn"
-  onClick={(e) => e.stopPropagation()}
->
-  👀 {item.views || 0}
-</button>
-    </div>
+  <button
+    className="action-btn"
+    onClick={(e) => {
+      e.stopPropagation();
+      navigate(`/property/${item._id}`, {
+        state: {
+          fromApp: true,
+        },
+      });
+    }}
+  >
+    👁 Review
+  </button>
+
+  <button
+    className="action-btn delete-action"
+    onClick={(e) => {
+      e.stopPropagation();
+      setDeleteId(item._id);
+    }}
+  >
+    🗑
+  </button>
+
+</div>
   </div>
 ))}
 {listings
