@@ -871,7 +871,7 @@ opacity:0.85;
 
 .recent-lead-card{
     display:grid;
-    grid-template-columns:1fr 70px;
+    grid-template-columns:1fr 72px;
     align-items:center;
     gap:12px;
     padding:16px;
@@ -882,33 +882,38 @@ opacity:0.85;
 }
 
 .lead-left h3{
-    margin:0;
+    margin:0 0 6px;
     font-size:17px;
+    font-weight:700;
 }
 
 .lead-bottom{
     display:flex;
     align-items:center;
     gap:8px;
-    margin-top:8px;
-    flex-wrap:wrap;
+    margin-top:6px;
+    flex-wrap:nowrap;      /* wrap mat hone do */
+    overflow-x:auto;       /* zarurat pade to scroll */
 }
 
 .lead-bottom p{
-    width:100%;
     margin:0;
+    width:auto;            /* IMPORTANT */
+    white-space:nowrap;
     font-size:13px;
 }
 
 .status-badge{
+    white-space:nowrap;
     font-size:11px;
     padding:4px 10px;
 }
 
 .status-select{
-    width:60px;
+    width:95px;
     height:34px;
     margin:0;
+    flex-shrink:0;
     font-size:12px;
 }
 
@@ -919,7 +924,7 @@ opacity:0.85;
 }
 
 .lead-right .view-btn{
-    width:70px;
+    width:68px;
     height:38px;
     font-size:12px;
 }
