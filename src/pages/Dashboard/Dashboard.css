@@ -1372,26 +1372,30 @@ opacity:0.85;
 
 @media (max-width:768px){
 
-    .recent-leads-header{
-        display:flex;
-        flex-direction:column;
-        gap:12px;
-        align-items:flex-start;
-    }
+.recent-leads-header{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:16px;
+}
 
-    .recent-leads-header h2{
-        margin:0;
-        font-size:22px;
-        line-height:normal;
-    }
+.recent-leads-header h2{
+    margin:0;
+    font-size:22px;
+    line-height:1;
+}
 
-    .all-leads-btn{
-        width:100%;
-        text-align:center;
-        padding:12px;
-        border-radius:10px;
-        box-sizing:border-box;
-    }
+.all-leads-btn{
+    width:auto;
+    padding:10px 14px;
+    border-radius:10px;
+    font-size:12px;
+    font-weight:600;
+    white-space:nowrap;
+    flex-shrink:0;
+}
 
 }
 
