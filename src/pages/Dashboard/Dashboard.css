@@ -867,50 +867,54 @@ opacity:0.85;
    MOBILE
 ========================= */
 
-@media(max-width:768px){
+@media (max-width:768px){
 
 .recent-lead-card{
-    display:flex;
-    justify-content:space-between;
+    display:grid;
+    grid-template-columns:1fr 70px;
     align-items:center;
     gap:12px;
     padding:16px;
 }
 
 .lead-info{
-    flex:1;
     min-width:0;
 }
 
 .lead-info h3{
     margin:0;
-    font-size:18px;
+    font-size:17px;
+    font-weight:700;
+}
+
+.lead-info p{
+    margin:0;
+    font-size:13px;
 }
 
 .lead-status-row{
     display:flex;
     align-items:center;
     gap:8px;
-    margin-top:10px;
-    flex-wrap:nowrap;
-}
-
-.lead-info p{
-    margin:0;
-    white-space:nowrap;
+    margin-top:8px;
+    flex-wrap:wrap;
 }
 
 .status-badge{
-    white-space:nowrap;
+    font-size:11px;
+    padding:4px 10px;
 }
 
 .status-select{
     width:110px;
-    flex-shrink:0;
+    height:34px;
+    margin:0;
 }
 
 .lead-action{
-    flex-shrink:0;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
 }
 
 .lead-action .view-btn{
