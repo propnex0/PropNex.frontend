@@ -888,12 +888,14 @@ opacity:0.85;
 .lead-status-row{
     width:100%;
     gap:8px;
+    margin: 10px;
 }
 
 .status-select{
     flex:1;
     width:auto;
-    margin:0;
+    margin:10px;
+    
 }
 
 .lead-action{
