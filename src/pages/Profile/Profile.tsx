@@ -329,7 +329,7 @@ user.name.charAt(0)
 
 {
 user.name ||
-"Khushiram Jat"
+""
 
 }
 
@@ -344,7 +344,7 @@ user.name ||
 
 {
 user.agencyName ||
-"Agency"
+""
 
 }
 
