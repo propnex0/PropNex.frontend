@@ -188,26 +188,9 @@ Save Draft
             placeholder="Description"
           />
         </div>
-<div className="upload-box">
-  <label><p>📸 Upload Property Images</p></label>
 
-  <input
-    type="file"
-    multiple
-    accept="image/*"
-    onChange={(e) =>
-      setImages(e.target.files)
-    }
-  />
-  
-</div>
 
-        <button
-          type="submit"
-          className="submit-btn"
-        >
-          Update Listing
-        </button>
+       
       </form>
     </div>
   );
