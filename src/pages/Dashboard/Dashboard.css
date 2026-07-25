@@ -877,27 +877,27 @@ opacity:0.85;
     padding:16px;
 }
 
-.lead-info{
+.lead-left{
     min-width:0;
 }
 
-.lead-info h3{
+.lead-left h3{
     margin:0;
     font-size:17px;
-    font-weight:700;
 }
 
-.lead-info p{
-    margin:0;
-    font-size:13px;
-}
-
-.lead-status-row{
+.lead-bottom{
     display:flex;
     align-items:center;
     gap:8px;
     margin-top:8px;
     flex-wrap:wrap;
+}
+
+.lead-bottom p{
+    width:100%;
+    margin:0;
+    font-size:13px;
 }
 
 .status-badge{
@@ -906,21 +906,22 @@ opacity:0.85;
 }
 
 .status-select{
-    width:110px;
+    width:100px;
     height:34px;
     margin:0;
+    font-size:12px;
 }
 
-.lead-action{
+.lead-right{
     display:flex;
     justify-content:flex-end;
     align-items:center;
 }
 
-.lead-action .view-btn{
+.lead-right .view-btn{
     width:70px;
     height:38px;
-    font-size:13px;
+    font-size:12px;
 }
 
 }
