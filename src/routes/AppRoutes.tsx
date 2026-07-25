@@ -30,6 +30,14 @@ import Profile from "../pages/Profile/Profile";
 
 const AppRoutes = () => {
   const location = useLocation();
+  const hideBottomNav =
+  location.pathname === "/" ||
+  location.pathname === "/login" ||
+  location.pathname === "/register" ||
+  (
+    location.pathname.startsWith("/property/") &&
+    !location.state?.fromApp
+  );
   return (
     <>
     <Routes>
@@ -129,14 +137,9 @@ element={<AddLead />}
 />
 
     </Routes>
-     {
-  location.pathname !== "/" &&
-  location.pathname !== "/login" &&
-  location.pathname !== "/register" &&
-  !location.pathname.startsWith("/property/") && (
-    <BottomNav />
-  )
-}
+
+{!hideBottomNav && <BottomNav />}
+
 </>
   );
 };

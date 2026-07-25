@@ -1,6 +1,6 @@
 import "./Dashboard.css";
 import Header from "../../components/Header/Header";
-import BottomNav from "../../components/BottomNav/BottomNav";
+
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -934,9 +934,10 @@ className={`status-badge ${lead.status.toLowerCase()}`}
     <p>₹ {topListing.price}</p>
 
     <Link
-      to={`/property/${topListing._id}`}
-      className="top-listing-link"
-    >
+  to={`/property/${topListing._id}`}
+  state={{ fromApp: true }}
+  className="top-listing-link"
+>
       <button className="view-btn">
         View Property
       </button>
@@ -991,9 +992,10 @@ className={`status-badge ${lead.status.toLowerCase()}`}
 
               </div>
 
-              <Link
-                to={`/property/${item._id}`}
-              >
+             <Link
+  to={`/property/${item._id}`}
+  state={{ fromApp: true }}
+>
                 <button className="view-btn">
                   View
                 </button>
@@ -1007,7 +1009,7 @@ className={`status-badge ${lead.status.toLowerCase()}`}
 
       </div>
 
-      <BottomNav />
+      
 
     </>
   );

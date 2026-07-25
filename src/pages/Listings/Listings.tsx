@@ -205,8 +205,12 @@ console.log("FIRST IMAGES =", data[0]?.images);
   className="listing-item"
   key={item._id}
   onClick={() =>
-    navigate(`/property/${item._id}`)
-  }
+  navigate(`/property/${item._id}`, {
+    state: {
+      fromApp: true,
+    },
+  })
+}
   style={{ cursor: "pointer" }}
 >
     <div className="listing-top">
