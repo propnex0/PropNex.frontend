@@ -1299,7 +1299,7 @@ opacity:0.85;
 @media(max-width:768px){
 
   .status-select{
-    width:100%;
+    width:50%;
   }
 
 }
