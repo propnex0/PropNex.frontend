@@ -658,16 +658,32 @@
   }
 
   .listing-actions{
+    display:grid;
     grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:16px;
+}
+
+.action-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     gap:6px;
-  }
 
-  .action-btn{
-    height:36px;
-    font-size:11px;
-    padding:0 2px;
-  }
+    height:48px;
+    padding:0 10px;
 
+    border-radius:12px;
+    font-size:14px;
+    font-weight:600;
+    line-height:1;
+
+    white-space:nowrap;
+    overflow:hidden;
+
+    border:1px solid #dbe4ee;
+    background:#fff;
+}
 }
 
 /* =========================================
