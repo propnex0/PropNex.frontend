@@ -897,34 +897,56 @@ className={`status-badge ${lead.status.toLowerCase()}`}
   }
 
 </div>
-<div className="top-listing-content">
 
-  <img
-    src={getMediaUrl(topListing.images?.[0])}
-    alt=""
-  />
 
-  <div className="top-listing-info">
 
-    <h3>{topListing.title}</h3>
+<div className="top-listing-card">
 
-    <p>📍 {topListing.city}</p>
+  <h2>🏆 Top Performing Listing</h2>
 
-    <p>👁 {topListing.views || 0} Views</p>
+  {
+    topListing ? (
 
-    <p>₹ {topListing.price}</p>
+      <div className="top-listing-content">
 
-  </div>
+        <img
+          src={getMediaUrl(topListing.images?.[0])}
+          alt={topListing.title}
+        />
 
-  <Link
-    to={`/property/${topListing._id}`}
-    state={{ fromApp: true }}
-    className="top-listing-link"
-  >
-    <button className="view-btn">
-      View Property
-    </button>
-  </Link>
+        <div className="top-listing-info">
+
+          <h3>{topListing.title}</h3>
+
+          <p>📍 {topListing.city}</p>
+
+          <p>👁 {topListing.views || 0} Views</p>
+
+          <p>₹ {topListing.price}</p>
+
+        </div>
+
+        <div className="top-listing-action">
+
+          <Link
+            to={`/property/${topListing._id}`}
+            state={{ fromApp: true }}
+          >
+            <button className="view-btn">
+              View Property
+            </button>
+          </Link>
+
+        </div>
+
+      </div>
+
+    ) : (
+
+      <p>No Listings Available</p>
+
+    )
+  }
 
 </div>
         <div className="recent-listings">
