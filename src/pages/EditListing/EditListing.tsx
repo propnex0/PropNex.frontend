@@ -14,7 +14,7 @@ const EditListing = () => {
     useState("Apartment");
   const [description, setDescription] =
     useState("");
-    const [images, setImages] = useState<FileList | null>(null);
+   
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -59,11 +59,7 @@ const EditListing = () => {
     formData.append("propertyType", propertyType);
     formData.append("description", description);
 
-    if (images) {
-      for (let i = 0; i < images.length; i++) {
-        formData.append("images", images[i]);
-      }
-    }
+    
 const userInfo = JSON.parse(
   localStorage.getItem("userInfo") || "{}"
 );
