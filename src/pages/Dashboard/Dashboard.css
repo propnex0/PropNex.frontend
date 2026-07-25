@@ -869,6 +869,38 @@ opacity:0.85;
 
 @media (max-width:768px){
 
+/* =========================
+   RECENT LEADS HEADER
+========================= */
+
+.recent-leads-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
+}
+
+.recent-leads-header h2{
+    margin:0;
+    font-size:22px;
+    line-height:normal;
+}
+
+.all-leads-btn{
+    width:auto;
+    padding:10px 16px;
+    border-radius:10px;
+    font-size:12px;
+    font-weight:600;
+    white-space:nowrap;
+    flex-shrink:0;
+}
+
+/* =========================
+   RECENT LEAD CARD
+========================= */
+
 .recent-lead-card{
     display:grid;
     grid-template-columns:1fr 70px;
@@ -882,34 +914,40 @@ opacity:0.85;
 }
 
 .lead-left h3{
-    margin:0 0 6px;
+    margin:0;
     font-size:18px;
     font-weight:700;
+    color:#111827;
 }
 
 .lead-bottom{
-    display:grid;
-    grid-template-columns:1fr;
+    display:flex;
+    flex-wrap:wrap;
     gap:8px;
-    margin-top:4px;
+    margin-top:8px;
 }
 
 .lead-bottom p{
+    width:100%;
     margin:0;
     font-size:14px;
+    color:#6b7280;
 }
 
 .status-badge{
-    display:inline-block;
-    width:fit-content;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     padding:5px 10px;
     font-size:12px;
+    border-radius:999px;
 }
 
 .status-select{
     width:120px;
     height:36px;
     margin:0;
+    font-size:13px;
 }
 
 .lead-right{
@@ -918,10 +956,15 @@ opacity:0.85;
     align-items:flex-start;
 }
 
+.lead-right a{
+    display:inline-block;
+}
+
 .lead-right .view-btn{
-    width:auto;
+    width:70px;
     height:38px;
-    font-size:13px;
+    font-size:12px;
+    padding:0;
 }
 
 }
