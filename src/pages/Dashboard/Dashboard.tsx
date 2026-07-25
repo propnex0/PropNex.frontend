@@ -813,88 +813,81 @@ console.log(error);
 
   <div className="recent-leads-header">
 
-  <h2>
-    🔥 Recent Leads
-  </h2>
+    <h2>🔥 Recent Leads</h2>
 
-  <Link
-    to="/leads"
-    className="all-leads-btn"
-  >
-    View All Leads
-  </Link>
+    <Link
+      to="/leads"
+      className="all-leads-btn"
+    >
+      View All Leads
+    </Link>
 
-</div>
+  </div>
 
-  {
-    recentLeads.length === 0
-    ?
+  {recentLeads.length === 0 ? (
+
     <p>No Leads Yet</p>
-    :
-    
-    recentLeads.map((lead:any) => (
+
+  ) : (
+
+    recentLeads.map((lead: any) => (
 
       <div
         key={lead._id}
         className="recent-lead-card"
       >
 
-        <div>
+        <div className="lead-left">
 
-          <h3>
-            {lead.name}
-          </h3>
+          <h3>👤 {lead.name}</h3>
 
-          <p>
-            📞 {lead.phone}
-          </p>
+          <div className="lead-bottom">
 
-          <span
-className={`status-badge ${lead.status.toLowerCase()}`}
->
-{lead.status}
-</span>
-<select
-  className="status-select"
-  value={lead.status}
-  onChange={(e) =>
-    updateLeadStatus(
-      lead._id,
-      e.target.value
-    )
-  }
->
-  <option value="New">
-    New
-  </option>
+            <p>📞 {lead.phone}</p>
 
-  <option value="Contacted">
-    Contacted
-  </option>
+            <span
+              className={`status-badge ${lead.status.toLowerCase()}`}
+            >
+              {lead.status}
+            </span>
 
-  <option value="Closed">
-    Closed
-  </option>
+            <select
+              className="status-select"
+              value={lead.status}
+              onChange={(e) =>
+                updateLeadStatus(
+                  lead._id,
+                  e.target.value
+                )
+              }
+            >
+              <option value="New">New</option>
+              <option value="Contacted">Contacted</option>
+              <option value="Closed">Closed</option>
+              <option value="Lost">Lost</option>
+            </select>
 
-  <option value="Lost">
-    Lost
-  </option>
+          </div>
 
-</select>
-       
+        </div>
 
-        <Link
-          to={`/lead/${lead._id}`}
-        >
-          <button className="view-btn">
-            View
-          </button>
-        </Link>
- </div>
+        <div className="lead-right">
+
+          <Link
+            to={`/lead/${lead._id}`}
+          >
+            <button className="view-btn">
+              View
+            </button>
+          </Link>
+
+        </div>
+
       </div>
 
     ))
-  }
+
+  )}
 
 </div>
 
