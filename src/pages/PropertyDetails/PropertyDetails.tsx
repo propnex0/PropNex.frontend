@@ -336,7 +336,7 @@ onClick={() => {
     <p>Balconies</p>
   </div>
 )}
-
+</div>
  <div className="details-grid">
 
   <div className="detail-item">
