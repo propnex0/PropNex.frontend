@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Header/Header";
 import "../AddListing/AddListing.css";
 
 const EditListing = () => {
@@ -14,7 +16,7 @@ const EditListing = () => {
     useState("Apartment");
   const [description, setDescription] =
     useState("");
-   
+    const [images, setImages] = useState<FileList | null>(null);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -59,7 +61,11 @@ const EditListing = () => {
     formData.append("propertyType", propertyType);
     formData.append("description", description);
 
-    
+    if (images) {
+      for (let i = 0; i < images.length; i++) {
+        formData.append("images", images[i]);
+      }
+    }
 const userInfo = JSON.parse(
   localStorage.getItem("userInfo") || "{}"
 );
@@ -93,6 +99,9 @@ const userInfo = JSON.parse(
 };
 
   return (
+     <>
+      <Sidebar />
+      <Header />
     <div className="add-listing">
       <h1>Edit Listing</h1>
 
@@ -184,9 +193,21 @@ Save Draft
             placeholder="Description"
           />
         </div>
+<div className="upload-box">
+  <label><p>📸 Upload Property Images</p></label>
 
+  <input
+    type="file"
+    multiple
+    accept="image/*"
+    onChange={(e) =>
+      setImages(e.target.files)
+    }
+  />
+  
+</div>
 
-         <button
+        <button
           type="submit"
           className="submit-btn"
         >
@@ -194,6 +215,7 @@ Save Draft
         </button>
       </form>
     </div>
+    </>
   );
 };
 
