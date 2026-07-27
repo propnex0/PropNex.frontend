@@ -14,6 +14,21 @@ const AddListing = () => {
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [propertyType, setPropertyType] = useState("Apartment");
+  const [propertyCategory, setPropertyCategory] =
+  useState("Residential");
+  useEffect(() => {
+  if (propertyCategory === "Residential") {
+    setPropertyType("Apartment");
+  }
+
+  if (propertyCategory === "Commercial") {
+    setPropertyType("Office Space");
+  }
+
+  if (propertyCategory === "Plot & Land") {
+    setPropertyType("Residential Plot");
+  }
+}, [propertyCategory]);
   const [transactionType, setTransactionType] = useState("Sale");
   const [description, setDescription] = useState("");
 
@@ -39,13 +54,60 @@ const AddListing = () => {
   const [floor, setFloor] = useState("");
   const [totalFloors, setTotalFloors] = useState("");
 
-  const [propertyAge, setPropertyAge] = useState("");
+  
 
   const [facing, setFacing] = useState("");
   const [furnishing, setFurnishing] = useState("");
 
   const [carParking, setCarParking] = useState("");
   const [bikeParking, setBikeParking] = useState("");
+  /* ==========================
+    PROPERTY FEATURES
+========================== */
+
+const [propertyId, setPropertyId] = useState(
+  `PNX${Date.now()}`
+);
+
+const [pricePerSqft, setPricePerSqft] = useState("");
+
+const [maintenanceCharges, setMaintenanceCharges] =
+  useState("");
+
+const [availabilityDate, setAvailabilityDate] =
+  useState("");
+
+const [electricityStatus, setElectricityStatus] =
+  useState("Available");
+
+const [waterSupply, setWaterSupply] =
+  useState("24x7");
+
+const [gatedSociety, setGatedSociety] =
+  useState("Yes");
+
+const [cornerProperty, setCornerProperty] =
+  useState("No");
+
+const [loanAvailable, setLoanAvailable] =
+  useState("Yes");
+
+const [priceNegotiable, setPriceNegotiable] =
+  useState("Yes");
+  const [officeType, setOfficeType] =
+  useState("Office Space");
+
+const [washrooms, setWashrooms] =
+  useState("");
+
+const [pantry, setPantry] =
+  useState("Yes");
+
+const [receptionArea, setReceptionArea] =
+  useState("Yes");
+
+const [commercialParking, setCommercialParking] =
+  useState("");
 
   /* ==========================
       LOCATION
@@ -62,6 +124,21 @@ const AddListing = () => {
   const [swimmingPool, setSwimmingPool] = useState("No");
   const [lift, setLift] = useState("No");
   const [gym, setGym] = useState("No");
+  const [ownership, setOwnership] = useState("Freehold");
+const [propertyAge, setPropertyAge] = useState("New");
+const [possessionStatus, setPossessionStatus] = useState("Ready to Move");
+const [reraNumber, setReraNumber] = useState("");
+const [propertyCondition, setPropertyCondition] = useState("Excellent");
+  const [security, setSecurity] = useState("No");
+const [cctv, setCctv] = useState("No");
+const [clubHouse, setClubHouse] = useState("No");
+const [garden, setGarden] = useState("No");
+const [kidsPlayArea, setKidsPlayArea] = useState("No");
+const [visitorParking, setVisitorParking] = useState("No");
+const [powerBackup, setPowerBackup] = useState("No");
+const [park, setPark] = useState("No");
+const [fireSafety, setFireSafety] = useState("No");
+const [intercom, setIntercom] = useState("No");
 
   /* ==========================
       BROKER DETAILS
@@ -351,6 +428,21 @@ const changeImageOrder = (
 
       formData.append("carParking", carParking);
       formData.append("bikeParking", bikeParking);
+      formData.append("propertyId", propertyId);
+formData.append("pricePerSqft", pricePerSqft);
+formData.append("maintenanceCharges", maintenanceCharges);
+formData.append("availabilityDate", availabilityDate);
+formData.append("electricityStatus", electricityStatus);
+formData.append("waterSupply", waterSupply);
+formData.append("gatedSociety", gatedSociety);
+formData.append("cornerProperty", cornerProperty);
+formData.append("loanAvailable", loanAvailable);
+formData.append("priceNegotiable", priceNegotiable);
+formData.append("officeType", officeType);
+formData.append("washrooms", washrooms);
+formData.append("pantry", pantry);
+formData.append("receptionArea", receptionArea);
+formData.append("commercialParking", commercialParking);
 
       /* -------------------------
           LOCATION
@@ -367,6 +459,21 @@ const changeImageOrder = (
       formData.append("swimmingPool", swimmingPool);
       formData.append("lift", lift);
       formData.append("gym", gym);
+      formData.append("ownership", ownership);
+formData.append("propertyAge", propertyAge);
+formData.append("possessionStatus", possessionStatus);
+formData.append("reraNumber", reraNumber);
+formData.append("propertyCondition", propertyCondition);
+      formData.append("security", security);
+formData.append("cctv", cctv);
+formData.append("clubHouse", clubHouse);
+formData.append("garden", garden);
+formData.append("kidsPlayArea", kidsPlayArea);
+formData.append("visitorParking", visitorParking);
+formData.append("powerBackup", powerBackup);
+formData.append("park", park);
+formData.append("fireSafety", fireSafety);
+formData.append("intercom", intercom);
 
       /* -------------------------
           BROKER
@@ -570,6 +677,21 @@ const changeImageOrder = (
 
       setCarParking("");
       setBikeParking("");
+      setPropertyId(`PNX${Date.now()}`);
+setPricePerSqft("");
+setMaintenanceCharges("");
+setAvailabilityDate("");
+setElectricityStatus("Available");
+setWaterSupply("24x7");
+setGatedSociety("Yes");
+setCornerProperty("No");
+setLoanAvailable("Yes");
+setPriceNegotiable("Yes");
+setOfficeType("Office Space");
+setWashrooms("");
+setPantry("Yes");
+setReceptionArea("Yes");
+setCommercialParking("");
 
       setCity("");
       setPinCode("");
@@ -578,6 +700,21 @@ const changeImageOrder = (
       setSwimmingPool("No");
       setLift("No");
       setGym("No");
+      setOwnership("Freehold");
+setPropertyAge("New");
+setPossessionStatus("Ready to Move");
+setReraNumber("");
+setPropertyCondition("Excellent");
+      setSecurity("No");
+setCctv("No");
+setClubHouse("No");
+setGarden("No");
+setKidsPlayArea("No");
+setVisitorParking("No");
+setPowerBackup("No");
+setPark("No");
+setFireSafety("No");
+setIntercom("No");
 
       setBrokerName("");
       setAgencyName("");
@@ -714,34 +851,71 @@ const changeImageOrder = (
 
     </div>
 
-    {/* Property Type */}
+   {/* Property Category */}
 
-    <div className="form-group">
+<div className="form-group">
 
-      <label>Property Type</label>
+  <label>Property Category</label>
 
-      <select
-        value={propertyType}
-        onChange={(e) =>
-          setPropertyType(e.target.value)
-        }
-      >
+  <select
+    value={propertyCategory}
+    onChange={(e) =>
+      setPropertyCategory(e.target.value)
+    }
+  >
+    <option>Residential</option>
+    <option>Commercial</option>
+    <option>Plot & Land</option>
+  </select>
 
+</div>
+
+{/* Property Type */}
+
+<div className="form-group">
+
+  <label>Property Type</label>
+
+  <select
+    value={propertyType}
+    onChange={(e) =>
+      setPropertyType(e.target.value)
+    }
+  >
+
+    {propertyCategory === "Residential" && (
+      <>
         <option>Apartment</option>
-
+        <option>Builder Floor</option>
         <option>Villa</option>
-
         <option>Independent House</option>
-
-        <option>Plot</option>
-
         <option>Penthouse</option>
+        <option>Studio Apartment</option>
+      </>
+    )}
 
-        <option>Commercial</option>
+    {propertyCategory === "Commercial" && (
+      <>
+        <option>Office Space</option>
+        <option>Shop</option>
+        <option>Showroom</option>
+        <option>Warehouse</option>
+        <option>Factory</option>
+      </>
+    )}
 
-      </select>
+    {propertyCategory === "Plot & Land" && (
+      <>
+        <option>Residential Plot</option>
+        <option>Commercial Plot</option>
+        <option>Agricultural Land</option>
+        <option>Industrial Plot</option>
+      </>
+    )}
 
-    </div>
+  </select>
+
+</div>
 
     {/* Transaction */}
 
@@ -859,7 +1033,7 @@ const changeImageOrder = (
   <div className="form-grid">
 
     {/* BHK */}
-
+{propertyCategory === "Residential" && (
     <div className="form-group">
       <label>BHK</label>
 
@@ -872,9 +1046,10 @@ const changeImageOrder = (
         }
       />
     </div>
+)}
 
     {/* Bathrooms */}
-
+{propertyCategory === "Residential" && (
     <div className="form-group">
       <label>Bathrooms</label>
 
@@ -887,9 +1062,9 @@ const changeImageOrder = (
         }
       />
     </div>
-
+)}
     {/* Balconies */}
-
+{propertyCategory === "Residential" && (
     <div className="form-group">
       <label>Balconies</label>
 
@@ -902,6 +1077,7 @@ const changeImageOrder = (
         }
       />
     </div>
+)}
 
     {/* Carpet Area */}
 
@@ -951,7 +1127,7 @@ const changeImageOrder = (
     </div>
 
     {/* Floor */}
-
+{propertyCategory === "Residential" && (
     <div className="form-group">
       <label>Floor</label>
 
@@ -964,9 +1140,10 @@ const changeImageOrder = (
         }
       />
     </div>
+)}
 
     {/* Total Floors */}
-
+{propertyCategory === "Residential" && (
     <div className="form-group">
       <label>Total Floors</label>
 
@@ -981,7 +1158,7 @@ const changeImageOrder = (
         }
       />
     </div>
-
+)}
     {/* Property Age */}
 
     <div className="form-group">
@@ -1027,7 +1204,7 @@ const changeImageOrder = (
     </div>
 
     {/* Furnishing */}
-
+{propertyCategory === "Residential" && (
     <div className="form-group">
       <label>Furnishing</label>
 
@@ -1049,7 +1226,7 @@ const changeImageOrder = (
 
       </select>
     </div>
-
+)}
     {/* Car Parking */}
 
     <div className="form-group">
@@ -1066,7 +1243,84 @@ const changeImageOrder = (
         }
       />
     </div>
+{propertyCategory === "Commercial" && (
 
+<>
+
+  <div className="form-group">
+    <label>Office Type</label>
+
+   <select
+  value={officeType}
+  onChange={(e) =>
+    setOfficeType(e.target.value)
+  }
+>
+  <option>Office Space</option>
+  <option>Shop</option>
+  <option>Showroom</option>
+  <option>Warehouse</option>
+  <option>Factory</option>
+</select>
+  </div>
+
+  <div className="form-group">
+    <label>Washrooms</label>
+
+    <input
+  type="number"
+  placeholder="2"
+  value={washrooms}
+  onChange={(e) =>
+    setWashrooms(e.target.value)
+  }
+/>
+  </div>
+
+  <div className="form-group">
+    <label>Pantry</label>
+
+    <select
+  value={pantry}
+  onChange={(e) =>
+    setPantry(e.target.value)
+  }
+>
+  <option>Yes</option>
+  <option>No</option>
+</select>
+  </div>
+
+  <div className="form-group">
+    <label>Reception Area</label>
+
+   <select
+  value={receptionArea}
+  onChange={(e) =>
+    setReceptionArea(e.target.value)
+  }
+>
+  <option>Yes</option>
+  <option>No</option>
+</select>
+  </div>
+
+  <div className="form-group">
+    <label>Parking</label>
+
+    <input
+  type="number"
+  placeholder="10"
+  value={commercialParking}
+  onChange={(e) =>
+    setCommercialParking(e.target.value)
+  }
+/>
+  </div>
+
+</>
+
+)}
     {/* Bike Parking */}
 
     <div className="form-group">
@@ -1163,58 +1417,397 @@ const changeImageOrder = (
 
   <div className="form-grid">
 
+    {/* Swimming Pool */}
     <div className="form-group">
-
       <label>Swimming Pool</label>
-
       <select
         value={swimmingPool}
-        onChange={(e) =>
-          setSwimmingPool(e.target.value)
-        }
+        onChange={(e) => setSwimmingPool(e.target.value)}
       >
         <option>No</option>
         <option>Yes</option>
       </select>
-
     </div>
 
+    {/* Lift */}
     <div className="form-group">
-
       <label>Lift</label>
-
       <select
         value={lift}
-        onChange={(e) =>
-          setLift(e.target.value)
-        }
+        onChange={(e) => setLift(e.target.value)}
       >
         <option>No</option>
         <option>Yes</option>
       </select>
+    </div>
 
+    {/* Gym */}
+    <div className="form-group">
+      <label>Gym</label>
+      <select
+        value={gym}
+        onChange={(e) => setGym(e.target.value)}
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+    {/* Security */}
+    <div className="form-group">
+      <label>Security</label>
+      <select
+        value={security}
+        onChange={(e) => setSecurity(e.target.value)}
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+    {/* CCTV */}
+    <div className="form-group">
+      <label>CCTV</label>
+      <select
+        value={cctv}
+        onChange={(e) => setCctv(e.target.value)}
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+    {/* Club House */}
+    <div className="form-group">
+      <label>Club House</label>
+      <select
+        value={clubHouse}
+        onChange={(e) => setClubHouse(e.target.value)}
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+    {/* Garden */}
+    <div className="form-group">
+      <label>Garden</label>
+      <select
+        value={garden}
+        onChange={(e) => setGarden(e.target.value)}
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+    {/* Kids Play Area */}
+    <div className="form-group">
+      <label>Kids Play Area</label>
+      <select
+        value={kidsPlayArea}
+        onChange={(e) => setKidsPlayArea(e.target.value)}
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+    {/* Visitor Parking */}
+    <div className="form-group">
+      <label>Visitor Parking</label>
+      <select
+        value={visitorParking}
+        onChange={(e) => setVisitorParking(e.target.value)}
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+    {/* Power Backup */}
+    <div className="form-group">
+      <label>Power Backup</label>
+      <select
+        value={powerBackup}
+        onChange={(e) => setPowerBackup(e.target.value)}
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+    {/* Park */}
+    <div className="form-group">
+      <label>Park</label>
+      <select
+        value={park}
+        onChange={(e) => setPark(e.target.value)}
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+    {/* Fire Safety */}
+    <div className="form-group">
+      <label>Fire Safety</label>
+      <select
+        value={fireSafety}
+        onChange={(e) => setFireSafety(e.target.value)}
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+    {/* Intercom */}
+    <div className="form-group">
+      <label>Intercom</label>
+      <select
+        value={intercom}
+        onChange={(e) => setIntercom(e.target.value)}
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+  </div>
+
+</div>
+{/* ==========================
+    LEGAL DETAILS
+========================== */}
+
+<div className="form-section">
+
+  <h2 className="section-title">
+    📑 Legal Details
+  </h2>
+
+  <div className="form-grid">
+
+    <div className="form-group">
+      <label>Ownership</label>
+
+      <select
+        value={ownership}
+        onChange={(e) => setOwnership(e.target.value)}
+      >
+        <option>Freehold</option>
+        <option>Leasehold</option>
+        <option>Power of Attorney</option>
+        <option>Co-operative Society</option>
+      </select>
     </div>
 
     <div className="form-group">
-
-      <label>Gym</label>
+      <label>Property Age</label>
 
       <select
-        value={gym}
-        onChange={(e) =>
-          setGym(e.target.value)
-        }
+        value={propertyAge}
+        onChange={(e) => setPropertyAge(e.target.value)}
       >
-        <option>No</option>
-        <option>Yes</option>
+        <option>New</option>
+        <option>0-1 Years</option>
+        <option>1-5 Years</option>
+        <option>5-10 Years</option>
+        <option>10+ Years</option>
       </select>
+    </div>
 
+    <div className="form-group">
+      <label>Possession Status</label>
+
+      <select
+        value={possessionStatus}
+        onChange={(e) => setPossessionStatus(e.target.value)}
+      >
+        <option>Ready to Move</option>
+        <option>Under Construction</option>
+        <option>Immediate</option>
+      </select>
+    </div>
+
+    <div className="form-group">
+      <label>Property Condition</label>
+
+      <select
+        value={propertyCondition}
+        onChange={(e) => setPropertyCondition(e.target.value)}
+      >
+        <option>Excellent</option>
+        <option>Good</option>
+        <option>Average</option>
+        <option>Needs Renovation</option>
+      </select>
+    </div>
+
+    <div className="form-group">
+      <label>RERA Number</label>
+
+      <input
+        type="text"
+        placeholder="RAJ/P/2026/XXXXX"
+        value={reraNumber}
+        onChange={(e) => setReraNumber(e.target.value)}
+      />
     </div>
 
   </div>
 
 </div>
 
+{/* ==========================
+    PROPERTY FEATURES
+========================== */}
+
+<div className="form-section">
+
+  <h2 className="section-title">
+    ⭐ Property Features
+  </h2>
+
+  <div className="form-grid">
+
+    <div className="form-group">
+      <label>Property ID</label>
+
+      <input
+        type="text"
+        value={propertyId}
+        readOnly
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Price Per Sq.ft</label>
+
+      <input
+        type="number"
+        placeholder="3500"
+        value={pricePerSqft}
+        onChange={(e)=>
+          setPricePerSqft(e.target.value)
+        }
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Maintenance Charges</label>
+
+      <input
+        type="number"
+        placeholder="2500"
+        value={maintenanceCharges}
+        onChange={(e)=>
+          setMaintenanceCharges(e.target.value)
+        }
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Availability Date</label>
+
+      <input
+        type="date"
+        value={availabilityDate}
+        onChange={(e)=>
+          setAvailabilityDate(e.target.value)
+        }
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Electricity</label>
+
+      <select
+        value={electricityStatus}
+        onChange={(e)=>
+          setElectricityStatus(e.target.value)
+        }
+      >
+        <option>Available</option>
+        <option>Not Available</option>
+      </select>
+    </div>
+
+    <div className="form-group">
+      <label>Water Supply</label>
+
+      <select
+        value={waterSupply}
+        onChange={(e)=>
+          setWaterSupply(e.target.value)
+        }
+      >
+        <option>24x7</option>
+        <option>Morning Only</option>
+        <option>Evening Only</option>
+        <option>Borewell</option>
+      </select>
+    </div>
+
+    <div className="form-group">
+      <label>Gated Society</label>
+
+      <select
+        value={gatedSociety}
+        onChange={(e)=>
+          setGatedSociety(e.target.value)
+        }
+      >
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+
+    <div className="form-group">
+      <label>Corner Property</label>
+
+      <select
+        value={cornerProperty}
+        onChange={(e)=>
+          setCornerProperty(e.target.value)
+        }
+      >
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+    </div>
+
+    <div className="form-group">
+      <label>Home Loan Available</label>
+
+      <select
+        value={loanAvailable}
+        onChange={(e)=>
+          setLoanAvailable(e.target.value)
+        }
+      >
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+
+    <div className="form-group">
+      <label>Price Negotiable</label>
+
+      <select
+        value={priceNegotiable}
+        onChange={(e)=>
+          setPriceNegotiable(e.target.value)
+        }
+      >
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+
+  </div>
+
+</div>
 {/* ==========================
     BROKER DETAILS
 ========================== */}
