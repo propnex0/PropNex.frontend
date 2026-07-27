@@ -239,6 +239,11 @@ onClick={() => {
 
 <div className="property-features">
 
+<div className="feature">
+  <h3>{property.propertyCategory || "-"}</h3>
+  <p>Category</p>
+</div>
+
   <div className="feature">
     <h3>{property.propertyType}</h3>
     <p>Property Type</p>
@@ -267,6 +272,11 @@ onClick={() => {
   <div className="feature">
   <h3>{property.images?.length || 0}</h3>
   <p>Images</p>
+</div>
+
+<div className="feature">
+  <h3>{property.propertyId || "-"}</h3>
+  <p>Property ID</p>
 </div>
 
 </div>
@@ -306,21 +316,26 @@ onClick={() => {
       <p>Transaction</p>
     </div>
 
-    <div className="feature">
-      <h3>{property.bhk || "-"}</h3>
-      <p>BHK</p>
-    </div>
-
-    <div className="feature">
-      <h3>{property.bathrooms || "-"}</h3>
-      <p>Bathrooms</p>
-    </div>
-
-    <div className="feature">
-      <h3>{property.balconies || "-"}</h3>
-      <p>Balconies</p>
-    </div>
+   {property.propertyCategory === "Residential" && (
+  <div className="feature">
+    <h3>{property.bhk || "-"}</h3>
+    <p>BHK</p>
   </div>
+)}
+
+{property.propertyCategory === "Residential" && (
+  <div className="feature">
+    <h3>{property.bathrooms || "-"}</h3>
+    <p>Bathrooms</p>
+  </div>
+)}
+
+    {property.propertyCategory === "Residential" && (
+  <div className="feature">
+    <h3>{property.balconies || "-"}</h3>
+    <p>Balconies</p>
+  </div>
+)}
 
  <div className="details-grid">
 
@@ -396,6 +411,137 @@ onClick={() => {
 
 
 </div>
+<div className="property-details-card">
+
+  <h3>⭐ Property Features</h3>
+
+  <div className="details-grid">
+
+    <div className="detail-item">
+      <h4>Property ID</h4>
+      <p>{property.propertyId || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Property Category</h4>
+      <p>{property.propertyCategory || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Price Per Sq.ft</h4>
+      <p>{property.pricePerSqft || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Maintenance Charges</h4>
+      <p>{property.maintenanceCharges || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Availability Date</h4>
+      <p>{property.availabilityDate || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Electricity</h4>
+      <p>{property.electricityStatus || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Water Supply</h4>
+      <p>{property.waterSupply || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Gated Society</h4>
+      <p>{property.gatedSociety || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Corner Property</h4>
+      <p>{property.cornerProperty || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Home Loan</h4>
+      <p>{property.loanAvailable || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Price Negotiable</h4>
+      <p>{property.priceNegotiable || "-"}</p>
+    </div>
+
+  </div>
+
+</div>
+<div className="property-details-card">
+
+  <h3>📑 Legal Details</h3>
+
+  <div className="details-grid">
+
+    <div className="detail-item">
+      <h4>Ownership</h4>
+      <p>{property.ownership || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Possession Status</h4>
+      <p>{property.possessionStatus || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Property Condition</h4>
+      <p>{property.propertyCondition || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>RERA Number</h4>
+      <p>{property.reraNumber || "-"}</p>
+    </div>
+
+  </div>
+
+</div>
+{property.propertyCategory === "Commercial" && (
+
+<div className="property-details-card">
+
+  <h3>🏢 Commercial Details</h3>
+
+  <div className="details-grid">
+
+    <div className="detail-item">
+      <h4>Office Type</h4>
+      <p>{property.officeType || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Washrooms</h4>
+      <p>{property.washrooms || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Pantry</h4>
+      <p>{property.pantry || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Reception Area</h4>
+      <p>{property.receptionArea || "-"}</p>
+    </div>
+
+    <div className="detail-item">
+      <h4>Parking</h4>
+      <p>{property.commercialParking || "-"}</p>
+    </div>
+
+  </div>
+
+</div>
+
+)}
 <div className="amenities">
   <h3>Amenities</h3>
 
@@ -412,6 +558,46 @@ onClick={() => {
     <span>
       🏋️ Gym : {property.gym}
     </span>
+
+<span>
+  🛡️ Security : {property.security}
+</span>
+
+<span>
+  📹 CCTV : {property.cctv}
+</span>
+
+<span>
+  🏢 Club House : {property.clubHouse}
+</span>
+
+<span>
+  🌳 Garden : {property.garden}
+</span>
+
+<span>
+  🛝 Kids Play Area : {property.kidsPlayArea}
+</span>
+
+<span>
+  🚗 Visitor Parking : {property.visitorParking}
+</span>
+
+<span>
+  ⚡ Power Backup : {property.powerBackup}
+</span>
+
+<span>
+  🌲 Park : {property.park}
+</span>
+
+<span>
+  🔥 Fire Safety : {property.fireSafety}
+</span>
+
+<span>
+  ☎️ Intercom : {property.intercom}
+</span>
 
   </div>
 </div>
